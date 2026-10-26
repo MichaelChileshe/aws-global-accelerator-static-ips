@@ -1,0 +1,4 @@
+300 connections over both static IPs:
+  eu-west-1 main NLB          211  (70.3%)
+  eu-west-1 canary NLB         89  (29.7%)
+saved /home/michael/global-accelerator/build/results/mix-canary-50.json

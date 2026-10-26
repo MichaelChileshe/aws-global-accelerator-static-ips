@@ -1,0 +1,2 @@
+{"action": "stop", "group": "primary", "region": "eu-west-1", "instances": ["i-0c40d2dd6faff5e7f", "i-0add9540a72758534", "i-09a4e114a8772a725"], "sent_utc": "2026-10-26T05:30:52.222Z", "done_utc": "2026-10-26T05:31:03.737Z"}
+{"action": "start", "group": "primary", "region": "eu-west-1", "instances": ["i-0c40d2dd6faff5e7f", "i-0add9540a72758534", "i-09a4e114a8772a725"], "sent_utc": "2026-10-26T05:32:20.500Z", "done_utc": "2026-10-26T05:32:43.517Z"}

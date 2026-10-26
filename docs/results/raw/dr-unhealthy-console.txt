@@ -1,0 +1,185 @@
+i-007d44cbd6a491f79	UEFI firmware (version  built at 09:00:00 on Nov  1 2018)
+[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40m  Booting `Amazon Linux (6.18.56-125.164.amzn2023.aarch64) 2023'
+
+[    2.348065] systemd-journald[1179]: Received client request to flush runtime journal.
+[    2.519809] zram0: detected capacity change from 0 to 843776
+[    2.542317] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    2.544081] ACPI: button: Power Button [PWRB]
+[    2.544625] input: Sleep Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/input/input1
+[    2.557300] ACPI: button: Sleep Button [SLPB]
+[    2.559161] ACPI: \_SB_.PCI0.GSI1: Enabled at IRQ 36
+[    2.559739] ena 0000:00:05.0: Elastic Network Adapter (ENA) v2.17.4g
+[    2.560630] ena 0000:00:05.0: enabling device (0010 -> 0012)
+[    2.567729] Adding 421884k swap on /dev/zram0.  Priority:100 extents:1 across:421884k SSDsc
+[    2.573075] ena 0000:00:05.0: ENA device version: 0.10
+[    2.573692] ena 0000:00:05.0: ENA controller version: 0.0.1 implementation version 1
+[    2.658090] ena 0000:00:05.0: LLQ is not supported Fallback to host mode policy.
+[    2.670789] ena 0000:00:05.0: Elastic Network Adapter (ENA) found at mem 80000000, mac addr 12:ff:cb:08:ba:63
+[    2.692256] ena 0000:00:05.0 ens5: renamed from eth0
+[    2.740373] RPC: Registered named UNIX socket transport module.
+[    2.741088] RPC: Registered udp transport module.
+[    2.741723] RPC: Registered tcp transport module.
+[    2.742361] RPC: Registered tcp-with-tls transport module.
+[    2.743110] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    2.821870] nvme nvme0: using unchecked data buffer
+[    4.976011] cloud-init[1934]: Cloud-init v. 22.2.2 running 'init' at Mon, 26 Oct 2026 04:31:41 +0000. Up 4.94 seconds.
+[    5.069152] cloud-init[1934]: ci-info: +++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+[    5.071121] cloud-init[1934]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    5.072993] cloud-init[1934]: ci-info: | Device |  Up  |           Address            |      Mask     | Scope  |     Hw-Address    |
+[    5.074835] cloud-init[1934]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    5.076778] cloud-init[1934]: ci-info: |  ens5  | True |         10.151.2.74          | 255.255.255.0 | global | 12:ff:cb:08:ba:63 |
+[    5.078636] cloud-init[1934]: ci-info: |  ens5  | True | fe80::10ff:cbff:fe08:ba63/64 |       .       |  link  | 12:ff:cb:08:ba:63 |
+[    5.080447] cloud-init[1934]: ci-info: |   lo   | True |          127.0.0.1           |   255.0.0.0   |  host  |         .         |
+[    5.082288] cloud-init[1934]: ci-info: |   lo   | True |           ::1/128            |       .       |  host  |         .         |
+[    5.084155] cloud-init[1934]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    5.085985] cloud-init[1934]: ci-info: +++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++
+[    5.087594] cloud-init[1934]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    5.089202] cloud-init[1934]: ci-info: | Route | Destination |  Gateway   |     Genmask     | Interface | Flags |
+[    5.090841] cloud-init[1934]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    5.093858] cloud-init[1934]: ci-info: |   0   |   0.0.0.0   | 10.151.2.1 |     0.0.0.0     |    ens5   |   UG  |
+[    5.095475] cloud-init[1934]: ci-info: |   1   |  10.151.0.2 | 10.151.2.1 | 255.255.255.255 |    ens5   |  UGH  |
+[    5.097112] cloud-init[1934]: ci-info: |   2   |  10.151.2.0 |  0.0.0.0   |  255.255.255.0  |    ens5   |   U   |
+[    5.098716] cloud-init[1934]: ci-info: |   3   |  10.151.2.1 |  0.0.0.0   | 255.255.255.255 |    ens5   |   UH  |
+[    5.100303] cloud-init[1934]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    5.101890] cloud-init[1934]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+[    5.103233] cloud-init[1934]: ci-info: +-------+-------------+---------+-----------+-------+
+[    5.104553] cloud-init[1934]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+[    5.105865] cloud-init[1934]: ci-info: +-------+-------------+---------+-----------+-------+
+[    5.107178] cloud-init[1934]: ci-info: |   0   |  fe80::/64  |    ::   |    ens5   |   U   |
+[    5.108509] cloud-init[1934]: ci-info: |   2   |    local    |    ::   |    ens5   |   U   |
+[    5.109824] cloud-init[1934]: ci-info: |   3   |  multicast  |    ::   |    ens5   |   U   |
+[    5.111184] cloud-init[1934]: ci-info: +-------+-------------+---------+-----------+-------+
+[    6.027735] cloud-init[1934]: Generating public/private ed25519 key pair.
+[    6.028978] cloud-init[1934]: Your identification has been saved in /etc/ssh/ssh_host_ed25519_key
+[    6.030394] cloud-init[1934]: Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub
+[    6.031806] cloud-init[1934]: The key fingerprint is:
+[    6.032653] cloud-init[1934]: SHA256:KDexb7KZ3PwT1k97XWaPQeb5Mpz7VNONw2xkfX07Tjs root@ip-10-151-2-74.ec2.internal
+[    6.034243] cloud-init[1934]: The key's randomart image is:
+[    6.035149] cloud-init[1934]: +--[ED25519 256]--+
+[    6.035917] cloud-init[1934]: |                 |
+[    6.036692] cloud-init[1934]: |               ..|
+[    6.037493] cloud-init[1934]: |      .       o =|
+[    6.038315] cloud-init[1934]: |       +     =o.*|
+[    6.039116] cloud-init[1934]: |    . = S  . +**+|
+[    6.039880] cloud-init[1934]: |     o o  o ..B.O|
+[    6.040675] cloud-init[1934]: |      . o. . + E=|
+[    6.041450] cloud-init[1934]: |     . O  .   O.*|
+[    6.042220] cloud-init[1934]: |      = o...  .*.|
+[    6.042998] cloud-init[1934]: +----[SHA256]-----+
+[    6.043771] cloud-init[1934]: Generating public/private ecdsa key pair.
+[    6.044813] cloud-init[1934]: Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key
+[    6.046156] cloud-init[1934]: Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub
+[    6.047507] cloud-init[1934]: The key fingerprint is:
+[    6.048316] cloud-init[1934]: SHA256:4+UE3F2FikycLUvFXAikb+jbGb2oQaPeB/SLMtKrkSA root@ip-10-151-2-74.ec2.internal
+[    6.049856] cloud-init[1934]: The key's randomart image is:
+[    6.050740] cloud-init[1934]: +---[ECDSA 256]---+
+[    6.051505] cloud-init[1934]: |         ooB.ooo.|
+[    6.052264] cloud-init[1934]: |       . o*.=..  |
+[    6.053054] cloud-init[1934]: |        ++.+..   |
+[    6.053825] cloud-init[1934]: |        .++ .    |
+[    6.054581] cloud-init[1934]: |E .    .S.=      |
+[    6.055341] cloud-init[1934]: | . . . =.B..     |
+[    6.056115] cloud-init[1934]: |    o.. +oo..    |
+[    6.056875] cloud-init[1934]: |    .o+..+o+ .   |
+[    6.057650] cloud-init[1934]: |    .oo++o+ .    |
+[    6.058403] cloud-init[1934]: +----[SHA256]-----+
+[    6.522136] cloud-init[2022]: Cloud-init v. 22.2.2 running 'modules:config' at Mon, 26 Oct 2026 04:31:42 +0000. Up 6.46 seconds.
+[    7.020826] cloud-init[2032]: Cloud-init v. 22.2.2 running 'modules:final' at Mon, 26 Oct 2026 04:31:43 +0000. Up 6.96 seconds.
+[    7.104206] cloud-init[2032]: + mkdir -p /opt/paysw
+[    7.107225] cloud-init[2032]: + echo IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9[2026-10-26T04:31:43.664732]tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogIC[2026-10-26T04:31:43.664755]AgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNob[2026-10-26T04:31:43.664793]GliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+[    7.168129] cloud-init[2032]: + base64 -d
+[    7.168909] cloud-init[2032]: + cat
+[    7.169544] cloud-init[2032]: + cat
+[    7.170176] cloud-init[2032]: + systemctl daemon-reload
+[    7.344751] cloud-init[2032]: + systemctl enable --now paysw
+[    7.352663] cloud-init[2032]: Created symlink /etc/systemd/system/multi-user.target.wants/paysw.service → /etc/systemd/system/paysw.service.
+[    7.574135] cloud-init[2032]: + sleep 2
+2026/10/26 04:31:44Z: Amazon SSM Agent v3.3.5390.0 is running
+2026/10/26 04:31:44Z: OsProductName: Amazon Linux
+2026/10/26 04:31:44Z: OsVersion: 2023
+[    9.579512] cloud-init[2032]: + systemctl is-active paysw
+[    9.585793] cloud-init[2032]: active
+[    9.586540] cloud-init[2032]: + sha256sum /opt/paysw/paysw.py
+[    9.589955] cloud-init[2032]: 9a0d72f4522368cf26bc005eb74ee9fddd7cd8a001529a4e00d5abf51bdb9fe1  /opt/paysw/paysw.py
+[    9.600072] cloud-init[2032]: + echo 'paysw ready in us-east-1 (main)'
+[    9.601286] cloud-init[2032]: paysw ready in us-east-1 (main)
+ci-info: no authorized SSH keys fingerprints found for user ec2-user.
+<14>Oct 26 04:31:45 cloud-init: #############################################################
+<14>Oct 26 04:31:45 cloud-init: -----BEGIN SSH HOST KEY FINGERPRINTS-----
+<14>Oct 26 04:31:45 cloud-init: 256 SHA256:4+UE3F2FikycLUvFXAikb+jbGb2oQaPeB/SLMtKrkSA root@ip-10-151-2-74.ec2.internal (ECDSA)
+<14>Oct 26 04:31:46 cloud-init: 256 SHA256:KDexb7KZ3PwT1k97XWaPQeb5Mpz7VNONw2xkfX07Tjs root@ip-10-151-2-74.ec2.internal (ED25519)
+<14>Oct 26 04:31:46 cloud-init: -----END SSH HOST KEY FINGERPRINTS-----
+<14>Oct 26 04:31:46 cloud-init: #############################################################
+-----BEGIN SSH HOST KEY KEYS-----
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA0uYCWl+c7kHHjU3k6SMPlmxA8ATLzJB+6FTDm5PaABHF0G9IOVvZFKxrgFCH+4Y8XsmNyP1ZF6BLwN6xTQMfE= root@ip-10-151-2-74.ec2.internal
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKMfpsSDO0MYZfHGA1zKCtGP2JPz4Zo9wi8lniEdLhTS root@ip-10-151-2-74.ec2.internal
+-----END SSH HOST KEY KEYS-----
+[    9.667772] cloud-init[2032]: Cloud-init v. 22.2.2 finished at Mon, 26 Oct 2026 04:31:46 +0000. Datasource DataSourceEc2.  Up 9.66 seconds
+
+Amazon Linux 2023.12.20261026
+Kernel 6.18.56-125.164.amzn2023.aarch64 on an aarch64 (-)
+
+ip-10-151-2-74 login: UEFI firmware (version  built at 09:00:00 on Nov  1 2018)
+[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[0m[35m[40m[0m[37m[40m  Booting `Amazon Linux (6.18.56-125.164.amzn2023.aarch64) 2023'
+
+[    1.988948] systemd-journald[1183]: Received client request to flush runtime journal.
+[    2.171122] zram0: detected capacity change from 0 to 843776
+[    2.191632] input: Power Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input0
+[    2.202065] Adding 421884k swap on /dev/zram0.  Priority:100 extents:1 across:421884k SSDsc
+[    2.212491] ACPI: \_SB_.PCI0.GSI1: Enabled at IRQ 36
+[    2.213070] ena 0000:00:05.0: Elastic Network Adapter (ENA) v2.17.4g
+[    2.213967] ena 0000:00:05.0: enabling device (0010 -> 0012)
+[    2.217150] ACPI: button: Power Button [PWRB]
+[    2.217709] input: Sleep Button as /devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/input/input1
+[    2.219314] ACPI: button: Sleep Button [SLPB]
+[    2.230297] ena 0000:00:05.0: ENA device version: 0.10
+[    2.230893] ena 0000:00:05.0: ENA controller version: 0.0.1 implementation version 1
+[    2.313887] ena 0000:00:05.0: LLQ is not supported Fallback to host mode policy.
+[    2.326877] ena 0000:00:05.0: Elastic Network Adapter (ENA) found at mem 80000000, mac addr 12:ff:cb:08:ba:63
+[    2.340920] ena 0000:00:05.0 ens5: renamed from eth0
+[    2.381133] RPC: Registered named UNIX socket transport module.
+[    2.381833] RPC: Registered udp transport module.
+[    2.382470] RPC: Registered tcp transport module.
+[    2.383106] RPC: Registered tcp-with-tls transport module.
+[    2.383850] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    2.419532] nvme nvme0: using unchecked data buffer
+[    2.820819] rm[1798]: removed '/var/lib/cloud/instance/boot-finished'
+[    2.822096] rm[1798]: removed '/var/lib/cloud/instance'
+[    4.487330] cloud-init[1941]: Cloud-init v. 22.2.2 running 'init' at Mon, 26 Oct 2026 04:54:44 +0000. Up 4.44 seconds.
+[    4.545689] cloud-init[1941]: ci-info: +++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+[    4.550127] cloud-init[1941]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    4.552206] cloud-init[1941]: ci-info: | Device |  Up  |           Address            |      Mask     | Scope  |     Hw-Address    |
+[    4.560124] cloud-init[1941]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    4.562152] cloud-init[1941]: ci-info: |  ens5  | True |         10.151.2.74          | 255.255.255.0 | global | 12:ff:cb:08:ba:63 |
+[    4.564083] cloud-init[1941]: ci-info: |  ens5  | True | fe80::10ff:cbff:fe08:ba63/64 |       .       |  link  | 12:ff:cb:08:ba:63 |
+[    4.566025] cloud-init[1941]: ci-info: |   lo   | True |          127.0.0.1           |   255.0.0.0   |  host  |         .         |
+[    4.567944] cloud-init[1941]: ci-info: |   lo   | True |           ::1/128            |       .       |  host  |         .         |
+[    4.569894] cloud-init[1941]: ci-info: +--------+------+------------------------------+---------------+--------+-------------------+
+[    4.571869] cloud-init[1941]: ci-info: +++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++
+[    4.573552] cloud-init[1941]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    4.575275] cloud-init[1941]: ci-info: | Route | Destination |  Gateway   |     Genmask     | Interface | Flags |
+[    4.576944] cloud-init[1941]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    4.578561] cloud-init[1941]: ci-info: |   0   |   0.0.0.0   | 10.151.2.1 |     0.0.0.0     |    ens5   |   UG  |
+[    4.580225] cloud-init[1941]: ci-info: |   1   |  10.151.0.2 | 10.151.2.1 | 255.255.255.255 |    ens5   |  UGH  |
+[    4.581927] cloud-init[1941]: ci-info: |   2   |  10.151.2.0 |  0.0.0.0   |  255.255.255.0  |    ens5   |   U   |
+[    4.583570] cloud-init[1941]: ci-info: |   3   |  10.151.2.1 |  0.0.0.0   | 255.255.255.255 |    ens5   |   UH  |
+[    4.585675] cloud-init[1941]: ci-info: +-------+-------------+------------+-----------------+-----------+-------+
+[    4.587482] cloud-init[1941]: ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+[    4.590156] cloud-init[1941]: ci-info: +-------+-------------+---------+-----------+-------+
+[    4.591716] cloud-init[1941]: ci-info: | Route | Destination | Gateway | Interface | Flags |
+[    4.595166] cloud-init[1941]: ci-info: +-------+-------------+---------+-----------+-------+
+[    4.596703] cloud-init[1941]: ci-info: |   0   |  fe80::/64  |    ::   |    ens5   |   U   |
+[    4.598202] cloud-init[1941]: ci-info: |   2   |    local    |    ::   |    ens5   |   U   |
+[    4.599662] cloud-init[1941]: ci-info: |   3   |  multicast  |    ::   |    ens5   |   U   |
+[    4.601122] cloud-init[1941]: ci-info: +-------+-------------+---------+-----------+-------+
+[    6.002545] cloud-init[2016]: Cloud-init v. 22.2.2 running 'modules:config' at Mon, 26 Oct 2026 04:54:46 +0000. Up 5.93 seconds.
+[    6.553972] cloud-init[2023]: Cloud-init v. 22.2.2 running 'modules:final' at Mon, 26 Oct 2026 04:54:46 +0000. Up 6.45 seconds.
+[    6.656892] cloud-init[2023]: Cloud-init v. 22.2.2 finished at Mon, 26 Oct 2026 04:54:47 +0000. Datasource DataSourceEc2.  Up 6.63 seconds
+2026/10/26 04:54:47Z: Amazon SSM Agent v3.3.5390.0 is running
+2026/10/26 04:54:47Z: OsProductName: Amazon Linux
+2026/10/26 04:54:47Z: OsVersion: 2023
+
+Amazon Linux 2023.12.20261026
+Kernel 6.18.56-125.164.amzn2023.aarch64 on an aarch64 (-)
+
+	2026-10-26T04:55:55+00:00

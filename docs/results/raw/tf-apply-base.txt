@@ -1,0 +1,214 @@
+Acquiring state lock. This may take a few moments...
+aws_globalaccelerator_accelerator.paysw: Creating...
+aws_iam_role.switch: Creating...
+aws_iam_role.switch: Creation complete after 3s [id=nkosi-paysw-role]
+aws_iam_role_policy_attachment.switch_ssm: Creating...
+aws_iam_instance_profile.switch: Creating...
+aws_iam_role_policy_attachment.switch_ssm: Creation complete after 1s [id=nkosi-paysw-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+module.dr.data.aws_availability_zones.available: Reading...
+module.dr.data.aws_ssm_parameter.al2023_arm: Reading...
+module.dr.aws_vpc.this: Creating...
+module.primary.data.aws_ssm_parameter.al2023_arm: Reading...
+module.primary.data.aws_availability_zones.available: Reading...
+module.primary.aws_vpc.this: Creating...
+module.primary.data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.primary.data.aws_availability_zones.available: Read complete after 1s [id=eu-west-1]
+module.dr.data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.dr.data.aws_availability_zones.available: Read complete after 1s [id=us-east-1]
+module.primary.aws_vpc.this: Creation complete after 5s [id=vpc-08455d74a7b626599]
+module.primary.aws_internet_gateway.this: Creating...
+module.primary.aws_route_table.public: Creating...
+module.primary.aws_security_group.switch: Creating...
+module.primary.aws_subnet.public[1]: Creating...
+module.primary.aws_subnet.public[0]: Creating...
+module.primary.aws_lb_target_group.this["main"]: Creating...
+module.primary.aws_lb_target_group.this["canary"]: Creating...
+module.dr.aws_vpc.this: Creation complete after 6s [id=vpc-028a9d9b695a35796]
+module.dr.aws_internet_gateway.this: Creating...
+aws_globalaccelerator_accelerator.paysw: Still creating... [00m10s elapsed]
+module.primary.aws_internet_gateway.this: Creation complete after 1s [id=igw-0b96ac107ace87f40]
+module.dr.aws_route_table.public: Creating...
+module.primary.aws_route_table.public: Creation complete after 2s [id=rtb-07190dd092e854a08]
+module.dr.aws_security_group.switch: Creating...
+aws_iam_instance_profile.switch: Creation complete after 8s [id=nkosi-paysw-profile]
+module.dr.aws_subnet.public[0]: Creating...
+module.dr.aws_internet_gateway.this: Creation complete after 2s [id=igw-08f97302db0420433]
+module.dr.aws_subnet.public[1]: Creating...
+module.dr.aws_route_table.public: Creation complete after 2s [id=rtb-047b5fbdf75bd0368]
+module.dr.aws_lb_target_group.this["main"]: Creating...
+module.primary.aws_lb_target_group.this["main"]: Creation complete after 3s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e]
+module.primary.aws_route.internet: Creating...
+module.primary.aws_lb_target_group.this["canary"]: Creation complete after 3s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159]
+module.dr.aws_route.internet: Creating...
+module.primary.aws_security_group.switch: Creation complete after 3s [id=sg-0d3edaa4dbc1c35d8]
+module.primary.aws_vpc_security_group_egress_rule.all: Creating...
+module.primary.aws_vpc_security_group_egress_rule.all: Creation complete after 0s [id=sgr-06f2d96b4bdece6c9]
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Creating...
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Creation complete after 0s [id=sgr-0697f68c2a88e8053]
+module.primary.aws_route.internet: Creation complete after 2s [id=r-rtb-07190dd092e854a081080289494]
+module.dr.aws_route.internet: Creation complete after 2s [id=r-rtb-047b5fbdf75bd03681080289494]
+module.dr.aws_security_group.switch: Creation complete after 4s [id=sg-0f12bc2efd487a470]
+module.dr.aws_vpc_security_group_egress_rule.all: Creating...
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Creating...
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Creation complete after 0s [id=sgr-0fc337adce0ef44ca]
+module.dr.aws_vpc_security_group_egress_rule.all: Creation complete after 0s [id=sgr-06ff8fc31e6c4e75a]
+module.dr.aws_lb_target_group.this["main"]: Creation complete after 5s [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700]
+module.primary.aws_subnet.public[1]: Still creating... [00m10s elapsed]
+module.primary.aws_subnet.public[0]: Still creating... [00m10s elapsed]
+aws_globalaccelerator_accelerator.paysw: Still creating... [00m20s elapsed]
+module.dr.aws_subnet.public[0]: Still creating... [00m10s elapsed]
+module.primary.aws_subnet.public[1]: Creation complete after 12s [id=subnet-0d5b43b9f27ecc262]
+module.primary.aws_subnet.public[0]: Creation complete after 12s [id=subnet-0121c213bef0be1d5]
+module.primary.aws_route_table_association.public[1]: Creating...
+module.primary.aws_route_table_association.public[0]: Creating...
+module.primary.aws_lb.this["canary"]: Creating...
+module.primary.aws_lb.this["main"]: Creating...
+module.dr.aws_subnet.public[1]: Still creating... [00m10s elapsed]
+module.primary.aws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-0fd9731bf3e71fa80]
+module.primary.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-0f85f97679982df66]
+module.primary.aws_instance.switch["switch-1"]: Creating...
+module.primary.aws_instance.switch["switch-0"]: Creating...
+module.primary.aws_instance.switch["canary"]: Creating...
+module.dr.aws_subnet.public[0]: Creation complete after 13s [id=subnet-0a594e5e25d91facf]
+module.dr.aws_subnet.public[1]: Creation complete after 13s [id=subnet-007c3ee1e14d2ef1b]
+module.dr.aws_route_table_association.public[0]: Creating...
+module.dr.aws_route_table_association.public[1]: Creating...
+module.dr.aws_lb.this["main"]: Creating...
+module.dr.aws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-0426b2c11888b14da]
+module.dr.aws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-0e41817150bf061ab]
+module.dr.aws_instance.switch["switch-1"]: Creating...
+module.dr.aws_instance.switch["switch-0"]: Creating...
+aws_globalaccelerator_accelerator.paysw: Still creating... [00m30s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [00m10s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [00m10s elapsed]
+module.primary.aws_instance.switch["switch-1"]: Still creating... [00m10s elapsed]
+module.primary.aws_instance.switch["switch-0"]: Still creating... [00m10s elapsed]
+module.primary.aws_instance.switch["canary"]: Still creating... [00m10s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [00m10s elapsed]
+module.dr.aws_instance.switch["switch-0"]: Still creating... [00m10s elapsed]
+module.dr.aws_instance.switch["switch-1"]: Still creating... [00m10s elapsed]
+module.primary.aws_instance.switch["switch-1"]: Creation complete after 16s [id=i-0add9540a72758534]
+module.primary.aws_instance.switch["canary"]: Creation complete after 16s [id=i-09a4e114a8772a725]
+module.primary.aws_instance.switch["switch-0"]: Creation complete after 17s [id=i-0c40d2dd6faff5e7f]
+module.primary.aws_lb_target_group_attachment.this["canary"]: Creating...
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Creating...
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Creating...
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Creation complete after 1s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0c40d2dd6faff5e7f,7000]
+module.primary.aws_lb_target_group_attachment.this["canary"]: Creation complete after 1s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159,i-09a4e114a8772a725,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Creation complete after 1s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0add9540a72758534,7000]
+aws_globalaccelerator_accelerator.paysw: Still creating... [00m40s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [00m20s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [00m20s elapsed]
+module.dr.aws_instance.switch["switch-1"]: Creation complete after 17s [id=i-007d44cbd6a491f79]
+module.dr.aws_instance.switch["switch-0"]: Creation complete after 17s [id=i-0581e2948846db3b5]
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Creating...
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Creating...
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Creation complete after 1s [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-007d44cbd6a491f79,7000]
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Creation complete after 1s [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-0581e2948846db3b5,7000]
+module.dr.aws_lb.this["main"]: Still creating... [00m20s elapsed]
+aws_globalaccelerator_accelerator.paysw: Still creating... [00m50s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [00m30s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [00m30s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [00m30s elapsed]
+aws_globalaccelerator_accelerator.paysw: Still creating... [01m00s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [00m40s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [00m40s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [00m40s elapsed]
+aws_globalaccelerator_accelerator.paysw: Still creating... [01m10s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [00m50s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [00m50s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [00m50s elapsed]
+aws_globalaccelerator_accelerator.paysw: Creation complete after 1m20s [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8]
+module.primary.aws_lb.this["canary"]: Still creating... [01m00s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m00s elapsed]
+aws_globalaccelerator_listener.tcp7000: Creating...
+module.dr.aws_lb.this["main"]: Still creating... [01m00s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m10s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [01m10s elapsed]
+aws_globalaccelerator_listener.tcp7000: Still creating... [00m10s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [01m10s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [01m20s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m20s elapsed]
+aws_globalaccelerator_listener.tcp7000: Still creating... [00m20s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [01m20s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m30s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [01m30s elapsed]
+aws_globalaccelerator_listener.tcp7000: Still creating... [00m30s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [01m30s elapsed]
+aws_globalaccelerator_listener.tcp7000: Creation complete after 38s [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1]
+module.primary.aws_lb.this["canary"]: Still creating... [01m40s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m40s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [01m40s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [01m50s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [01m50s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [01m50s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [02m00s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [02m00s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [02m00s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [02m10s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [02m10s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [02m10s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [02m20s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [02m20s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [02m20s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [02m30s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [02m30s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [02m30s elapsed]
+module.primary.aws_lb.this["canary"]: Still creating... [02m40s elapsed]
+module.primary.aws_lb.this["main"]: Still creating... [02m40s elapsed]
+module.dr.aws_lb.this["main"]: Still creating... [02m40s elapsed]
+module.primary.aws_lb.this["canary"]: Creation complete after 2m48s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17]
+module.primary.aws_lb.this["main"]: Creation complete after 2m48s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4]
+aws_globalaccelerator_endpoint_group.primary: Creating...
+module.primary.aws_lb_listener.this["canary"]: Creating...
+module.primary.aws_lb_listener.this["main"]: Creating...
+module.primary.aws_lb_listener.this["canary"]: Creation complete after 2s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244]
+module.primary.aws_lb_listener.this["main"]: Creation complete after 2s [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964]
+module.dr.aws_lb.this["main"]: Creation complete after 2m49s [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a]
+module.dr.aws_lb_listener.this["main"]: Creating...
+module.dr.aws_lb_listener.this["main"]: Creation complete after 2s [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81]
+aws_globalaccelerator_endpoint_group.primary: Still creating... [00m10s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Still creating... [00m20s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Still creating... [00m30s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Creation complete after 31s [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+aws_globalaccelerator_endpoint_group.dr: Creating...
+aws_globalaccelerator_endpoint_group.dr: Still creating... [00m10s elapsed]
+aws_globalaccelerator_endpoint_group.dr: Still creating... [00m20s elapsed]
+aws_globalaccelerator_endpoint_group.dr: Creation complete after 29s [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002]
+Releasing state lock. This may take a few moments...
+
+Apply complete! Resources: 48 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+accelerator_arn = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8"
+accelerator_dns = "a68b840701c2ad124.awsglobalaccelerator.com"
+endpoint_groups = {
+  "dr" = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002"
+  "primary" = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700"
+}
+paysw_sha256 = "9a0d72f4522368cf26bc005eb74ee9fddd7cd8a001529a4e00d5abf51bdb9fe1"
+regions = {
+  "dr" = {
+    "instances" = [
+      "i-0581e2948846db3b5",
+      "i-007d44cbd6a491f79",
+    ]
+    "nlb_dns" = "nkosi-paysw-us-e86bbc3a939cc46a.elb.us-east-1.amazonaws.com"
+    "region" = "us-east-1"
+  }
+  "primary" = {
+    "canary_instance" = "i-09a4e114a8772a725"
+    "canary_nlb_dns" = "nkosi-paysw-eu-canary-74df44cb31a03b17.elb.eu-west-1.amazonaws.com"
+    "instances" = [
+      "i-0c40d2dd6faff5e7f",
+      "i-0add9540a72758534",
+    ]
+    "nlb_dns" = "nkosi-paysw-eu-6f2baf321c5efce4.elb.eu-west-1.amazonaws.com"
+    "region" = "eu-west-1"
+  }
+}
+static_ips = [
+  "15.197.220.221",
+  "166.117.216.165",
+]

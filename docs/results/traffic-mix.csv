@@ -1,0 +1,6 @@
+drill,setting,connections,answered_by,count,share_pct
+base,"main w200, canary w0, eu-west-1 dial 100%",200,eu-west-1 main NLB,200,100.0
+canary-50,"main w200, canary w50, eu-west-1 dial 100%",300,eu-west-1 main NLB,211,70.3
+canary-50,"main w200, canary w50, eu-west-1 dial 100%",300,eu-west-1 canary NLB,89,29.7
+dial-50,"main w200, canary w0, eu-west-1 dial 50%",300,eu-west-1 main NLB,154,51.3
+dial-50,"main w200, canary w0, eu-west-1 dial 50%",300,us-east-1 main NLB,146,48.7

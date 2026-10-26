@@ -1,0 +1,35 @@
+{
+ "sync_token": "1792984625",
+ "create_date": "2026-10-26-03-17-05",
+ "prefix_counts": {
+  "CLOUDFRONT": {
+   "ipv4": 214,
+   "ipv6": 34,
+   "ipv4_addresses": 4225413
+  },
+  "GLOBALACCELERATOR": {
+   "ipv4": 132,
+   "ipv6": 47,
+   "ipv4_addresses": 429312
+  },
+  "CLOUDFRONT_ORIGIN_FACING": {
+   "ipv4": 49,
+   "ipv6": 38,
+   "ipv4_addresses": 344384
+  }
+ },
+ "static_ips": [
+  "15.197.220.221",
+  "166.117.216.165"
+ ],
+ "static_ips_inside_ga_ranges": {
+  "15.197.220.221": true,
+  "166.117.216.165": true
+ },
+ "accelerator_dns": "a68b840701c2ad124.awsglobalaccelerator.com",
+ "dns_answers_over_10_lookups": [
+  "15.197.220.221",
+  "166.117.216.165"
+ ],
+ "dns_matches_static_ips": true
+}

@@ -1,0 +1,58 @@
+{
+ "taken_utc": "2026-10-26T05:06:42+00:00",
+ "name": "nkosi-paysw",
+ "status": "DEPLOYED",
+ "enabled": true,
+ "dns_name": "a68b840701c2ad124.awsglobalaccelerator.com",
+ "static_ips": [
+  "15.197.220.221",
+  "166.117.216.165"
+ ],
+ "listener": {
+  "protocol": "TCP",
+  "ports": [
+   {
+    "FromPort": 7000,
+    "ToPort": 7000
+   }
+  ],
+  "client_affinity": "NONE"
+ },
+ "groups": [
+  {
+   "region": "eu-west-1",
+   "traffic_dial": 100.0,
+   "health_check": "TCP:7000 every 10 s, threshold 3",
+   "endpoints": [
+    {
+     "endpoint": "nkosi-paysw-eu",
+     "weight": 200,
+     "health": "HEALTHY",
+     "reason": "",
+     "client_ip_preservation": false
+    },
+    {
+     "endpoint": "nkosi-paysw-eu-canary",
+     "weight": 50,
+     "health": "HEALTHY",
+     "reason": "",
+     "client_ip_preservation": false
+    }
+   ]
+  },
+  {
+   "region": "us-east-1",
+   "traffic_dial": 100.0,
+   "health_check": "TCP:7000 every 10 s, threshold 3",
+   "endpoints": [
+    {
+     "endpoint": "nkosi-paysw-us",
+     "weight": 128,
+     "health": "HEALTHY",
+     "reason": "",
+     "client_ip_preservation": false
+    }
+   ]
+  }
+ ]
+}

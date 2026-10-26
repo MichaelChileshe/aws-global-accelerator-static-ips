@@ -1,0 +1,4 @@
+300 connections over both static IPs:
+  eu-west-1 main NLB          154  (51.3%)
+  us-east-1 main NLB          146  (48.7%)
+saved /home/michael/global-accelerator/build/results/mix-dial-50.json

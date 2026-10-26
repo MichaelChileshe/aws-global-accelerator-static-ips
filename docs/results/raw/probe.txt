@@ -1,0 +1,5 @@
+static IP 1            30/30 ok  answered by eu-west-1  connect p50 101.05 ms p90 103.1   full AUTH p50 474.65 ms p90 512.6
+static IP 2            30/30 ok  answered by eu-west-1  connect p50 96.65 ms p90 103.6   full AUTH p50 500.55 ms p90 512.7
+us-east-1 NLB direct   30/30 ok  answered by us-east-1  connect p50 409.05 ms p90 482.1   full AUTH p50 716.7 ms p90 819.1
+eu-west-1 NLB direct   30/30 ok  answered by eu-west-1  connect p50 307.1 ms p90 308.9   full AUTH p50 614.1 ms p90 615.0
+saved /home/michael/global-accelerator/build/results/probe.json

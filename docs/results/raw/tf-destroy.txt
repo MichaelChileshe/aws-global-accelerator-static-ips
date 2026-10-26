@@ -1,0 +1,2013 @@
+Acquiring state lock. This may take a few moments...
+aws_iam_role.switch: Refreshing state... [id=nkosi-paysw-role]
+aws_globalaccelerator_accelerator.paysw: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8]
+aws_iam_role_policy_attachment.switch_ssm: Refreshing state... [id=nkosi-paysw-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+aws_iam_instance_profile.switch: Refreshing state... [id=nkosi-paysw-profile]
+aws_globalaccelerator_listener.tcp7000: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1]
+module.dr.data.aws_availability_zones.available: Reading...
+module.dr.data.aws_ssm_parameter.al2023_arm: Reading...
+module.dr.aws_vpc.this: Refreshing state... [id=vpc-028a9d9b695a35796]
+module.primary.data.aws_ssm_parameter.al2023_arm: Reading...
+module.primary.aws_vpc.this: Refreshing state... [id=vpc-08455d74a7b626599]
+module.primary.data.aws_availability_zones.available: Reading...
+module.primary.data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.primary.data.aws_availability_zones.available: Read complete after 1s [id=eu-west-1]
+module.dr.data.aws_availability_zones.available: Read complete after 2s [id=us-east-1]
+module.dr.data.aws_ssm_parameter.al2023_arm: Read complete after 2s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.primary.aws_internet_gateway.this: Refreshing state... [id=igw-0b96ac107ace87f40]
+module.primary.aws_route_table.public: Refreshing state... [id=rtb-07190dd092e854a08]
+module.primary.aws_security_group.switch: Refreshing state... [id=sg-0d3edaa4dbc1c35d8]
+module.primary.aws_lb_target_group.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e]
+module.primary.aws_lb_target_group.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159]
+module.primary.aws_subnet.public[0]: Refreshing state... [id=subnet-0121c213bef0be1d5]
+module.primary.aws_subnet.public[1]: Refreshing state... [id=subnet-0d5b43b9f27ecc262]
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Refreshing state... [id=sgr-0697f68c2a88e8053]
+module.primary.aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-06f2d96b4bdece6c9]
+module.dr.aws_internet_gateway.this: Refreshing state... [id=igw-08f97302db0420433]
+module.dr.aws_route_table.public: Refreshing state... [id=rtb-047b5fbdf75bd0368]
+module.dr.aws_security_group.switch: Refreshing state... [id=sg-0f12bc2efd487a470]
+module.dr.aws_lb_target_group.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700]
+module.dr.aws_subnet.public[0]: Refreshing state... [id=subnet-0a594e5e25d91facf]
+module.dr.aws_subnet.public[1]: Refreshing state... [id=subnet-007c3ee1e14d2ef1b]
+module.primary.aws_lb.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17]
+module.primary.aws_lb.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4]
+module.primary.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0f85f97679982df66]
+module.primary.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0fd9731bf3e71fa80]
+module.dr.aws_route.internet: Refreshing state... [id=r-rtb-047b5fbdf75bd03681080289494]
+module.primary.aws_route.internet: Refreshing state... [id=r-rtb-07190dd092e854a081080289494]
+module.dr.aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-06ff8fc31e6c4e75a]
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Refreshing state... [id=sgr-0fc337adce0ef44ca]
+module.primary.aws_instance.switch["switch-0"]: Refreshing state... [id=i-0c40d2dd6faff5e7f]
+module.primary.aws_instance.switch["switch-1"]: Refreshing state... [id=i-0add9540a72758534]
+module.primary.aws_instance.switch["canary"]: Refreshing state... [id=i-09a4e114a8772a725]
+module.dr.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0e41817150bf061ab]
+module.dr.aws_lb.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a]
+module.dr.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0426b2c11888b14da]
+module.dr.aws_instance.switch["switch-1"]: Refreshing state... [id=i-007d44cbd6a491f79]
+module.dr.aws_instance.switch["switch-0"]: Refreshing state... [id=i-0581e2948846db3b5]
+aws_globalaccelerator_endpoint_group.primary: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+module.primary.aws_lb_listener.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244]
+module.primary.aws_lb_listener.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964]
+module.dr.aws_lb_listener.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81]
+aws_globalaccelerator_endpoint_group.dr: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002]
+module.primary.aws_lb_target_group_attachment.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159,i-09a4e114a8772a725,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0add9540a72758534,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0c40d2dd6faff5e7f,7000]
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-0581e2948846db3b5,7000]
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-007d44cbd6a491f79,7000]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_globalaccelerator_accelerator.paysw will be destroyed
+  - resource "aws_globalaccelerator_accelerator" "paysw" {
+      - arn                 = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8" -> null
+      - dns_name            = "a68b840701c2ad124.awsglobalaccelerator.com" -> null
+      - enabled             = true -> null
+      - hosted_zone_id      = "Z2BJ6XQ5FK7U4H" -> null
+      - id                  = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8" -> null
+      - ip_address_type     = "IPV4" -> null
+      - ip_sets             = [
+          - {
+              - ip_addresses = [
+                  - "15.197.220.221",
+                  - "166.117.216.165",
+                ]
+              - ip_family    = "IPv4"
+            },
+        ] -> null
+      - name                = "nkosi-paysw" -> null
+      - tags                = {} -> null
+      - tags_all            = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+        # (1 unchanged attribute hidden)
+
+      - attributes {
+          - flow_logs_enabled   = false -> null
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+  # aws_globalaccelerator_endpoint_group.dr will be destroyed
+  - resource "aws_globalaccelerator_endpoint_group" "dr" {
+      - arn                           = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002" -> null
+      - endpoint_group_region         = "us-east-1" -> null
+      - health_check_interval_seconds = 10 -> null
+      - health_check_port             = 7000 -> null
+      - health_check_protocol         = "TCP" -> null
+      - id                            = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002" -> null
+      - listener_arn                  = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1" -> null
+      - threshold_count               = 3 -> null
+      - traffic_dial_percentage       = 100 -> null
+        # (1 unchanged attribute hidden)
+
+      - endpoint_configuration {
+          - client_ip_preservation_enabled = false -> null
+          - endpoint_id                    = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a" -> null
+          - weight                         = 128 -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_globalaccelerator_endpoint_group.primary will be destroyed
+  - resource "aws_globalaccelerator_endpoint_group" "primary" {
+      - arn                           = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700" -> null
+      - endpoint_group_region         = "eu-west-1" -> null
+      - health_check_interval_seconds = 10 -> null
+      - health_check_port             = 7000 -> null
+      - health_check_protocol         = "TCP" -> null
+      - id                            = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700" -> null
+      - listener_arn                  = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1" -> null
+      - threshold_count               = 3 -> null
+      - traffic_dial_percentage       = 100 -> null
+        # (1 unchanged attribute hidden)
+
+      - endpoint_configuration {
+          - client_ip_preservation_enabled = false -> null
+          - endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+          - weight                         = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+      - endpoint_configuration {
+          - client_ip_preservation_enabled = false -> null
+          - endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+          - weight                         = 200 -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_globalaccelerator_listener.tcp7000 will be destroyed
+  - resource "aws_globalaccelerator_listener" "tcp7000" {
+      - accelerator_arn = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8" -> null
+      - arn             = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1" -> null
+      - client_affinity = "NONE" -> null
+      - id              = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1" -> null
+      - protocol        = "TCP" -> null
+
+      - port_range {
+          - from_port = 7000 -> null
+          - to_port   = 7000 -> null
+        }
+    }
+
+  # aws_iam_instance_profile.switch will be destroyed
+  - resource "aws_iam_instance_profile" "switch" {
+      - arn         = "arn:aws:iam::<account-id>:instance-profile/nkosi-paysw-profile" -> null
+      - create_date = "2026-10-26T04:31:05Z" -> null
+      - id          = "nkosi-paysw-profile" -> null
+      - name        = "nkosi-paysw-profile" -> null
+      - path        = "/" -> null
+      - role        = "nkosi-paysw-role" -> null
+      - tags        = {} -> null
+      - tags_all    = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - unique_id   = "AIPA3IFWBO652FY7WLS6J" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # aws_iam_role.switch will be destroyed
+  - resource "aws_iam_role" "switch" {
+      - arn                   = "arn:aws:iam::<account-id>:role/nkosi-paysw-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-10-26T04:31:04Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "nkosi-paysw-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "nkosi-paysw-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - unique_id             = "AROA3IFWBO654IQ3EP7JC" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_iam_role_policy_attachment.switch_ssm will be destroyed
+  - resource "aws_iam_role_policy_attachment" "switch_ssm" {
+      - id         = "nkosi-paysw-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore" -> null
+      - role       = "nkosi-paysw-role" -> null
+    }
+
+  # module.dr.aws_instance.switch["switch-0"] will be destroyed
+  - resource "aws_instance" "switch" {
+      - ami                                  = "ami-00148f0945cd46c39" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:<account-id>:instance/i-0581e2948846db3b5" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "nkosi-paysw-profile" -> null
+      - id                                   = "i-0581e2948846db3b5" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t4g.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-025cf393ec4c2a4b3" -> null
+      - private_dns                          = "ip-10-151-1-37.ec2.internal" -> null
+      - private_ip                           = "10.151.1.37" -> null
+      - public_dns                           = "ec2-44-200-239-87.compute-1.amazonaws.com" -> null
+      - public_ip                            = "44.200.239.87" -> null
+      - region                               = "us-east-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0a594e5e25d91facf" -> null
+      - tags                                 = {
+          - "Name"       = "nkosi-paysw-us-switch-0"
+          - "SwitchRole" = "main"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy"  = "terraform"
+          - "Name"       = "nkosi-paysw-us-switch-0"
+          - "Project"    = "aws-global-accelerator-static-ips"
+          - "SwitchRole" = "main"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=us-east-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in us-east-1 (main)"
+        EOT -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0f12bc2efd487a470",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 2 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-025cf393ec4c2a4b3" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:us-east-1:<account-id>:key/fa956852-6a94-48f9-9315-fe5d975d6b38" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "ManagedBy" = "terraform"
+              - "Project"   = "aws-global-accelerator-static-ips"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0d6f96a6613817a44" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # module.dr.aws_instance.switch["switch-1"] will be destroyed
+  - resource "aws_instance" "switch" {
+      - ami                                  = "ami-00148f0945cd46c39" -> null
+      - arn                                  = "arn:aws:ec2:us-east-1:<account-id>:instance/i-007d44cbd6a491f79" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "us-east-1b" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "nkosi-paysw-profile" -> null
+      - id                                   = "i-007d44cbd6a491f79" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t4g.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-0033277b7f7f53a1b" -> null
+      - private_dns                          = "ip-10-151-2-74.ec2.internal" -> null
+      - private_ip                           = "10.151.2.74" -> null
+      - public_dns                           = "ec2-3-95-163-202.compute-1.amazonaws.com" -> null
+      - public_ip                            = "3.95.163.202" -> null
+      - region                               = "us-east-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-007c3ee1e14d2ef1b" -> null
+      - tags                                 = {
+          - "Name"       = "nkosi-paysw-us-switch-1"
+          - "SwitchRole" = "main"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy"  = "terraform"
+          - "Name"       = "nkosi-paysw-us-switch-1"
+          - "Project"    = "aws-global-accelerator-static-ips"
+          - "SwitchRole" = "main"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=us-east-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in us-east-1 (main)"
+        EOT -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0f12bc2efd487a470",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 2 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-0033277b7f7f53a1b" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:us-east-1:<account-id>:key/fa956852-6a94-48f9-9315-fe5d975d6b38" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "ManagedBy" = "terraform"
+              - "Project"   = "aws-global-accelerator-static-ips"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-05b8d877c8c86b688" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # module.dr.aws_internet_gateway.this will be destroyed
+  - resource "aws_internet_gateway" "this" {
+      - arn      = "arn:aws:ec2:us-east-1:<account-id>:internet-gateway/igw-08f97302db0420433" -> null
+      - id       = "igw-08f97302db0420433" -> null
+      - owner_id = "<account-id>" -> null
+      - region   = "us-east-1" -> null
+      - tags     = {
+          - "Name" = "nkosi-paysw-us-igw"
+        } -> null
+      - tags_all = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-igw"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id   = "vpc-028a9d9b695a35796" -> null
+    }
+
+  # module.dr.aws_lb.this["main"] will be destroyed
+  - resource "aws_lb" "this" {
+      - arn                                                          = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a" -> null
+      - arn_suffix                                                   = "net/nkosi-paysw-us/e86bbc3a939cc46a" -> null
+      - dns_name                                                     = "nkosi-paysw-us-e86bbc3a939cc46a.elb.us-east-1.amazonaws.com" -> null
+      - dns_record_client_routing_policy                             = "any_availability_zone" -> null
+      - enable_cross_zone_load_balancing                             = true -> null
+      - enable_deletion_protection                                   = false -> null
+      - enable_prefix_for_ipv6_source_nat                            = "off" -> null
+      - enable_zonal_shift                                           = false -> null
+      - id                                                           = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a" -> null
+      - internal                                                     = false -> null
+      - ip_address_type                                              = "ipv4" -> null
+      - load_balancer_type                                           = "network" -> null
+      - name                                                         = "nkosi-paysw-us" -> null
+      - region                                                       = "us-east-1" -> null
+      - secondary_ips_auto_assigned_per_subnet                       = 0 -> null
+      - security_groups                                              = [] -> null
+      - subnets                                                      = [
+          - "subnet-007c3ee1e14d2ef1b",
+          - "subnet-0a594e5e25d91facf",
+        ] -> null
+      - tags                                                         = {} -> null
+      - tags_all                                                     = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                                       = "vpc-028a9d9b695a35796" -> null
+      - zone_id                                                      = "Z26RNL4JYFTOTI" -> null
+        # (3 unchanged attributes hidden)
+
+      - access_logs {
+          - enabled = false -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - subnet_mapping {
+          - subnet_id            = "subnet-007c3ee1e14d2ef1b" -> null
+            # (4 unchanged attributes hidden)
+        }
+      - subnet_mapping {
+          - subnet_id            = "subnet-0a594e5e25d91facf" -> null
+            # (4 unchanged attributes hidden)
+        }
+    }
+
+  # module.dr.aws_lb_listener.this["main"] will be destroyed
+  - resource "aws_lb_listener" "this" {
+      - arn                      = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81" -> null
+      - id                       = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81" -> null
+      - load_balancer_arn        = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a" -> null
+      - port                     = 7000 -> null
+      - protocol                 = "TCP" -> null
+      - region                   = "us-east-1" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - tcp_idle_timeout_seconds = 350 -> null
+        # (1 unchanged attribute hidden)
+
+      - default_action {
+          - order            = 1 -> null
+          - target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+          - type             = "forward" -> null
+        }
+    }
+
+  # module.dr.aws_lb_target_group.this["main"] will be destroyed
+  - resource "aws_lb_target_group" "this" {
+      - arn                                = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+      - arn_suffix                         = "targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+      - connection_termination             = false -> null
+      - deregistration_delay               = "10" -> null
+      - id                                 = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+      - ip_address_type                    = "ipv4" -> null
+      - lambda_multi_value_headers_enabled = false -> null
+      - load_balancer_arns                 = [
+          - "arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a",
+        ] -> null
+      - load_balancing_cross_zone_enabled  = "use_load_balancer_configuration" -> null
+      - name                               = "nkosi-paysw-us" -> null
+      - port                               = 7000 -> null
+      - preserve_client_ip                 = "false" -> null
+      - protocol                           = "TCP" -> null
+      - proxy_protocol_v2                  = false -> null
+      - region                             = "us-east-1" -> null
+      - slow_start                         = 0 -> null
+      - tags                               = {} -> null
+      - tags_all                           = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - target_control_port                = 0 -> null
+      - target_type                        = "instance" -> null
+      - vpc_id                             = "vpc-028a9d9b695a35796" -> null
+        # (1 unchanged attribute hidden)
+
+      - health_check {
+          - enabled             = true -> null
+          - healthy_threshold   = 2 -> null
+          - interval            = 10 -> null
+          - port                = "7000" -> null
+          - protocol            = "TCP" -> null
+          - timeout             = 10 -> null
+          - unhealthy_threshold = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - stickiness {
+          - cookie_duration = 0 -> null
+          - enabled         = false -> null
+          - type            = "source_ip" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - target_failover {}
+
+      - target_group_health {
+          - dns_failover {
+              - minimum_healthy_targets_count      = "1" -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+          - unhealthy_state_routing {
+              - minimum_healthy_targets_count      = 1 -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+        }
+
+      - target_health_state {
+          - enable_unhealthy_connection_termination = true -> null
+          - unhealthy_draining_interval             = 0 -> null
+        }
+    }
+
+  # module.dr.aws_lb_target_group_attachment.this["switch-0"] will be destroyed
+  - resource "aws_lb_target_group_attachment" "this" {
+      - id               = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-0581e2948846db3b5,7000" -> null
+      - port             = 7000 -> null
+      - region           = "us-east-1" -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+      - target_id        = "i-0581e2948846db3b5" -> null
+    }
+
+  # module.dr.aws_lb_target_group_attachment.this["switch-1"] will be destroyed
+  - resource "aws_lb_target_group_attachment" "this" {
+      - id               = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-007d44cbd6a491f79,7000" -> null
+      - port             = 7000 -> null
+      - region           = "us-east-1" -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700" -> null
+      - target_id        = "i-007d44cbd6a491f79" -> null
+    }
+
+  # module.dr.aws_route.internet will be destroyed
+  - resource "aws_route" "internet" {
+      - destination_cidr_block      = "0.0.0.0/0" -> null
+      - gateway_id                  = "igw-08f97302db0420433" -> null
+      - id                          = "r-rtb-047b5fbdf75bd03681080289494" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "us-east-1" -> null
+      - route_table_id              = "rtb-047b5fbdf75bd0368" -> null
+      - state                       = "active" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # module.dr.aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:us-east-1:<account-id>:route-table/rtb-047b5fbdf75bd0368" -> null
+      - id               = "rtb-047b5fbdf75bd0368" -> null
+      - owner_id         = "<account-id>" -> null
+      - propagating_vgws = [] -> null
+      - region           = "us-east-1" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-08f97302db0420433"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "nkosi-paysw-us-public-rt"
+        } -> null
+      - tags_all         = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-public-rt"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id           = "vpc-028a9d9b695a35796" -> null
+    }
+
+  # module.dr.aws_route_table_association.public[0] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0e41817150bf061ab" -> null
+      - region         = "us-east-1" -> null
+      - route_table_id = "rtb-047b5fbdf75bd0368" -> null
+      - subnet_id      = "subnet-0a594e5e25d91facf" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.dr.aws_route_table_association.public[1] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0426b2c11888b14da" -> null
+      - region         = "us-east-1" -> null
+      - route_table_id = "rtb-047b5fbdf75bd0368" -> null
+      - subnet_id      = "subnet-007c3ee1e14d2ef1b" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.dr.aws_security_group.switch will be destroyed
+  - resource "aws_security_group" "switch" {
+      - arn                    = "arn:aws:ec2:us-east-1:<account-id>:security-group/sg-0f12bc2efd487a470" -> null
+      - description            = "Payment switch - port 7000 from inside the VPC (the NLB) only" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Outbound: SSM, package repositories"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0f12bc2efd487a470" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "10.151.0.0/16",
+                ]
+              - description      = "TCP 7000 from the NLB (its addresses are inside the VPC)"
+              - from_port        = 7000
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 7000
+            },
+        ] -> null
+      - name                   = "nkosi-paysw-us-switch-sg" -> null
+      - owner_id               = "<account-id>" -> null
+      - region                 = "us-east-1" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "nkosi-paysw-us-switch-sg"
+        } -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-switch-sg"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                 = "vpc-028a9d9b695a35796" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.dr.aws_subnet.public[0] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:<account-id>:subnet/subnet-0a594e5e25d91facf" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az1" -> null
+      - cidr_block                                     = "10.151.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0a594e5e25d91facf" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "<account-id>" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "us-east-1" -> null
+      - tags                                           = {
+          - "Name" = "nkosi-paysw-us-public-0"
+        } -> null
+      - tags_all                                       = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-public-0"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                         = "vpc-028a9d9b695a35796" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.dr.aws_subnet.public[1] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:us-east-1:<account-id>:subnet/subnet-007c3ee1e14d2ef1b" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "use1-az2" -> null
+      - cidr_block                                     = "10.151.2.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-007c3ee1e14d2ef1b" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "<account-id>" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "us-east-1" -> null
+      - tags                                           = {
+          - "Name" = "nkosi-paysw-us-public-1"
+        } -> null
+      - tags_all                                       = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-public-1"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                         = "vpc-028a9d9b695a35796" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.dr.aws_vpc.this will be destroyed
+  - resource "aws_vpc" "this" {
+      - arn                                  = "arn:aws:ec2:us-east-1:<account-id>:vpc/vpc-028a9d9b695a35796" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.151.0.0/16" -> null
+      - default_network_acl_id               = "acl-014ddd90322f7efae" -> null
+      - default_route_table_id               = "rtb-07bc03f31ffb904da" -> null
+      - default_security_group_id            = "sg-03476a6b14f6b466c" -> null
+      - dhcp_options_id                      = "dopt-005c03a6fb6933432" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-028a9d9b695a35796" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-07bc03f31ffb904da" -> null
+      - owner_id                             = "<account-id>" -> null
+      - region                               = "us-east-1" -> null
+      - tags                                 = {
+          - "Name" = "nkosi-paysw-us-vpc"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-us-vpc"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.dr.aws_vpc_security_group_egress_rule.all will be destroyed
+  - resource "aws_vpc_security_group_egress_rule" "all" {
+      - arn                    = "arn:aws:ec2:us-east-1:<account-id>:security-group-rule/sgr-06ff8fc31e6c4e75a" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - description            = "Outbound: SSM, package repositories" -> null
+      - id                     = "sgr-06ff8fc31e6c4e75a" -> null
+      - ip_protocol            = "-1" -> null
+      - region                 = "us-east-1" -> null
+      - security_group_id      = "sg-0f12bc2efd487a470" -> null
+      - security_group_rule_id = "sgr-06ff8fc31e6c4e75a" -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+    }
+
+  # module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch will be destroyed
+  - resource "aws_vpc_security_group_ingress_rule" "nlb_to_switch" {
+      - arn                    = "arn:aws:ec2:us-east-1:<account-id>:security-group-rule/sgr-0fc337adce0ef44ca" -> null
+      - cidr_ipv4              = "10.151.0.0/16" -> null
+      - description            = "TCP 7000 from the NLB (its addresses are inside the VPC)" -> null
+      - from_port              = 7000 -> null
+      - id                     = "sgr-0fc337adce0ef44ca" -> null
+      - ip_protocol            = "tcp" -> null
+      - region                 = "us-east-1" -> null
+      - security_group_id      = "sg-0f12bc2efd487a470" -> null
+      - security_group_rule_id = "sgr-0fc337adce0ef44ca" -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - to_port                = 7000 -> null
+    }
+
+  # module.primary.aws_instance.switch["canary"] will be destroyed
+  - resource "aws_instance" "switch" {
+      - ami                                  = "ami-050d447ce746f6136" -> null
+      - arn                                  = "arn:aws:ec2:eu-west-1:<account-id>:instance/i-09a4e114a8772a725" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "eu-west-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "nkosi-paysw-profile" -> null
+      - id                                   = "i-09a4e114a8772a725" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t4g.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-003f7456f68bd244b" -> null
+      - private_dns                          = "ip-10-150-1-128.eu-west-1.compute.internal" -> null
+      - private_ip                           = "10.150.1.128" -> null
+      - public_dns                           = "ec2-52-212-208-146.eu-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "52.212.208.146" -> null
+      - region                               = "eu-west-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0121c213bef0be1d5" -> null
+      - tags                                 = {
+          - "Name"       = "nkosi-paysw-eu-canary"
+          - "SwitchRole" = "canary"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy"  = "terraform"
+          - "Name"       = "nkosi-paysw-eu-canary"
+          - "Project"    = "aws-global-accelerator-static-ips"
+          - "SwitchRole" = "canary"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=canary
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (canary)"
+        EOT -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0d3edaa4dbc1c35d8",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 2 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-003f7456f68bd244b" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:eu-west-1:<account-id>:key/c1dd2b35-4be5-4e74-b27e-fdcd857868df" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "ManagedBy" = "terraform"
+              - "Project"   = "aws-global-accelerator-static-ips"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0bb1e234fc9c7c070" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # module.primary.aws_instance.switch["switch-0"] will be destroyed
+  - resource "aws_instance" "switch" {
+      - ami                                  = "ami-050d447ce746f6136" -> null
+      - arn                                  = "arn:aws:ec2:eu-west-1:<account-id>:instance/i-0c40d2dd6faff5e7f" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "eu-west-1a" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "nkosi-paysw-profile" -> null
+      - id                                   = "i-0c40d2dd6faff5e7f" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t4g.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-064676c6d095787d6" -> null
+      - private_dns                          = "ip-10-150-1-18.eu-west-1.compute.internal" -> null
+      - private_ip                           = "10.150.1.18" -> null
+      - public_dns                           = "ec2-18-201-99-127.eu-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "18.201.99.127" -> null
+      - region                               = "eu-west-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0121c213bef0be1d5" -> null
+      - tags                                 = {
+          - "Name"       = "nkosi-paysw-eu-switch-0"
+          - "SwitchRole" = "main"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy"  = "terraform"
+          - "Name"       = "nkosi-paysw-eu-switch-0"
+          - "Project"    = "aws-global-accelerator-static-ips"
+          - "SwitchRole" = "main"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (main)"
+        EOT -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0d3edaa4dbc1c35d8",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 2 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-064676c6d095787d6" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:eu-west-1:<account-id>:key/c1dd2b35-4be5-4e74-b27e-fdcd857868df" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "ManagedBy" = "terraform"
+              - "Project"   = "aws-global-accelerator-static-ips"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0db54466d4576eebd" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # module.primary.aws_instance.switch["switch-1"] will be destroyed
+  - resource "aws_instance" "switch" {
+      - ami                                  = "ami-050d447ce746f6136" -> null
+      - arn                                  = "arn:aws:ec2:eu-west-1:<account-id>:instance/i-0add9540a72758534" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "eu-west-1b" -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - force_destroy                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - iam_instance_profile                 = "nkosi-paysw-profile" -> null
+      - id                                   = "i-0add9540a72758534" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t4g.nano" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-0438cfeeb5f114ddb" -> null
+      - private_dns                          = "ip-10-150-2-169.eu-west-1.compute.internal" -> null
+      - private_ip                           = "10.150.2.169" -> null
+      - public_dns                           = "ec2-34-244-56-115.eu-west-1.compute.amazonaws.com" -> null
+      - public_ip                            = "34.244.56.115" -> null
+      - region                               = "eu-west-1" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0d5b43b9f27ecc262" -> null
+      - tags                                 = {
+          - "Name"       = "nkosi-paysw-eu-switch-1"
+          - "SwitchRole" = "main"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy"  = "terraform"
+          - "Name"       = "nkosi-paysw-eu-switch-1"
+          - "Project"    = "aws-global-accelerator-static-ips"
+          - "SwitchRole" = "main"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (main)"
+        EOT -> null
+      - user_data_replace_on_change          = true -> null
+      - vpc_security_group_ids               = [
+          - "sg-0d3edaa4dbc1c35d8",
+        ] -> null
+        # (8 unchanged attributes hidden)
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count            = 2 -> null
+          - threads_per_core      = 1 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - credit_specification {
+          - cpu_credits = "unlimited" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 2 -> null
+          - http_tokens                 = "required" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - primary_network_interface {
+          - delete_on_termination = true -> null
+          - network_interface_id  = "eni-0438cfeeb5f114ddb" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/xvda" -> null
+          - encrypted             = true -> null
+          - iops                  = 3000 -> null
+          - kms_key_id            = "arn:aws:kms:eu-west-1:<account-id>:key/c1dd2b35-4be5-4e74-b27e-fdcd857868df" -> null
+          - tags                  = {} -> null
+          - tags_all              = {
+              - "ManagedBy" = "terraform"
+              - "Project"   = "aws-global-accelerator-static-ips"
+            } -> null
+          - throughput            = 125 -> null
+          - volume_id             = "vol-0e4d1d5b7906a0669" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp3" -> null
+        }
+    }
+
+  # module.primary.aws_internet_gateway.this will be destroyed
+  - resource "aws_internet_gateway" "this" {
+      - arn      = "arn:aws:ec2:eu-west-1:<account-id>:internet-gateway/igw-0b96ac107ace87f40" -> null
+      - id       = "igw-0b96ac107ace87f40" -> null
+      - owner_id = "<account-id>" -> null
+      - region   = "eu-west-1" -> null
+      - tags     = {
+          - "Name" = "nkosi-paysw-eu-igw"
+        } -> null
+      - tags_all = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-igw"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id   = "vpc-08455d74a7b626599" -> null
+    }
+
+  # module.primary.aws_lb.this["canary"] will be destroyed
+  - resource "aws_lb" "this" {
+      - arn                                                          = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+      - arn_suffix                                                   = "net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+      - dns_name                                                     = "nkosi-paysw-eu-canary-74df44cb31a03b17.elb.eu-west-1.amazonaws.com" -> null
+      - dns_record_client_routing_policy                             = "any_availability_zone" -> null
+      - enable_cross_zone_load_balancing                             = true -> null
+      - enable_deletion_protection                                   = false -> null
+      - enable_prefix_for_ipv6_source_nat                            = "off" -> null
+      - enable_zonal_shift                                           = false -> null
+      - id                                                           = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+      - internal                                                     = false -> null
+      - ip_address_type                                              = "ipv4" -> null
+      - load_balancer_type                                           = "network" -> null
+      - name                                                         = "nkosi-paysw-eu-canary" -> null
+      - region                                                       = "eu-west-1" -> null
+      - secondary_ips_auto_assigned_per_subnet                       = 0 -> null
+      - security_groups                                              = [] -> null
+      - subnets                                                      = [
+          - "subnet-0121c213bef0be1d5",
+          - "subnet-0d5b43b9f27ecc262",
+        ] -> null
+      - tags                                                         = {} -> null
+      - tags_all                                                     = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                                       = "vpc-08455d74a7b626599" -> null
+      - zone_id                                                      = "Z2IFOLAFXWLO4F" -> null
+        # (3 unchanged attributes hidden)
+
+      - access_logs {
+          - enabled = false -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - subnet_mapping {
+          - subnet_id            = "subnet-0121c213bef0be1d5" -> null
+            # (4 unchanged attributes hidden)
+        }
+      - subnet_mapping {
+          - subnet_id            = "subnet-0d5b43b9f27ecc262" -> null
+            # (4 unchanged attributes hidden)
+        }
+    }
+
+  # module.primary.aws_lb.this["main"] will be destroyed
+  - resource "aws_lb" "this" {
+      - arn                                                          = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+      - arn_suffix                                                   = "net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+      - dns_name                                                     = "nkosi-paysw-eu-6f2baf321c5efce4.elb.eu-west-1.amazonaws.com" -> null
+      - dns_record_client_routing_policy                             = "any_availability_zone" -> null
+      - enable_cross_zone_load_balancing                             = true -> null
+      - enable_deletion_protection                                   = false -> null
+      - enable_prefix_for_ipv6_source_nat                            = "off" -> null
+      - enable_zonal_shift                                           = false -> null
+      - id                                                           = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+      - internal                                                     = false -> null
+      - ip_address_type                                              = "ipv4" -> null
+      - load_balancer_type                                           = "network" -> null
+      - name                                                         = "nkosi-paysw-eu" -> null
+      - region                                                       = "eu-west-1" -> null
+      - secondary_ips_auto_assigned_per_subnet                       = 0 -> null
+      - security_groups                                              = [] -> null
+      - subnets                                                      = [
+          - "subnet-0121c213bef0be1d5",
+          - "subnet-0d5b43b9f27ecc262",
+        ] -> null
+      - tags                                                         = {} -> null
+      - tags_all                                                     = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                                       = "vpc-08455d74a7b626599" -> null
+      - zone_id                                                      = "Z2IFOLAFXWLO4F" -> null
+        # (3 unchanged attributes hidden)
+
+      - access_logs {
+          - enabled = false -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - subnet_mapping {
+          - subnet_id            = "subnet-0121c213bef0be1d5" -> null
+            # (4 unchanged attributes hidden)
+        }
+      - subnet_mapping {
+          - subnet_id            = "subnet-0d5b43b9f27ecc262" -> null
+            # (4 unchanged attributes hidden)
+        }
+    }
+
+  # module.primary.aws_lb_listener.this["canary"] will be destroyed
+  - resource "aws_lb_listener" "this" {
+      - arn                      = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244" -> null
+      - id                       = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244" -> null
+      - load_balancer_arn        = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+      - port                     = 7000 -> null
+      - protocol                 = "TCP" -> null
+      - region                   = "eu-west-1" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - tcp_idle_timeout_seconds = 350 -> null
+        # (1 unchanged attribute hidden)
+
+      - default_action {
+          - order            = 1 -> null
+          - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159" -> null
+          - type             = "forward" -> null
+        }
+    }
+
+  # module.primary.aws_lb_listener.this["main"] will be destroyed
+  - resource "aws_lb_listener" "this" {
+      - arn                      = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964" -> null
+      - id                       = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964" -> null
+      - load_balancer_arn        = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+      - port                     = 7000 -> null
+      - protocol                 = "TCP" -> null
+      - region                   = "eu-west-1" -> null
+      - tags                     = {} -> null
+      - tags_all                 = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - tcp_idle_timeout_seconds = 350 -> null
+        # (1 unchanged attribute hidden)
+
+      - default_action {
+          - order            = 1 -> null
+          - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+          - type             = "forward" -> null
+        }
+    }
+
+  # module.primary.aws_lb_target_group.this["canary"] will be destroyed
+  - resource "aws_lb_target_group" "this" {
+      - arn                                = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159" -> null
+      - arn_suffix                         = "targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159" -> null
+      - connection_termination             = false -> null
+      - deregistration_delay               = "10" -> null
+      - id                                 = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159" -> null
+      - ip_address_type                    = "ipv4" -> null
+      - lambda_multi_value_headers_enabled = false -> null
+      - load_balancer_arns                 = [
+          - "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17",
+        ] -> null
+      - load_balancing_cross_zone_enabled  = "use_load_balancer_configuration" -> null
+      - name                               = "nkosi-paysw-eu-canary" -> null
+      - port                               = 7000 -> null
+      - preserve_client_ip                 = "false" -> null
+      - protocol                           = "TCP" -> null
+      - proxy_protocol_v2                  = false -> null
+      - region                             = "eu-west-1" -> null
+      - slow_start                         = 0 -> null
+      - tags                               = {} -> null
+      - tags_all                           = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - target_control_port                = 0 -> null
+      - target_type                        = "instance" -> null
+      - vpc_id                             = "vpc-08455d74a7b626599" -> null
+        # (1 unchanged attribute hidden)
+
+      - health_check {
+          - enabled             = true -> null
+          - healthy_threshold   = 2 -> null
+          - interval            = 10 -> null
+          - port                = "7000" -> null
+          - protocol            = "TCP" -> null
+          - timeout             = 10 -> null
+          - unhealthy_threshold = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - stickiness {
+          - cookie_duration = 0 -> null
+          - enabled         = false -> null
+          - type            = "source_ip" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - target_failover {}
+
+      - target_group_health {
+          - dns_failover {
+              - minimum_healthy_targets_count      = "1" -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+          - unhealthy_state_routing {
+              - minimum_healthy_targets_count      = 1 -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+        }
+
+      - target_health_state {
+          - enable_unhealthy_connection_termination = true -> null
+          - unhealthy_draining_interval             = 0 -> null
+        }
+    }
+
+  # module.primary.aws_lb_target_group.this["main"] will be destroyed
+  - resource "aws_lb_target_group" "this" {
+      - arn                                = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+      - arn_suffix                         = "targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+      - connection_termination             = false -> null
+      - deregistration_delay               = "10" -> null
+      - id                                 = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+      - ip_address_type                    = "ipv4" -> null
+      - lambda_multi_value_headers_enabled = false -> null
+      - load_balancer_arns                 = [
+          - "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4",
+        ] -> null
+      - load_balancing_cross_zone_enabled  = "use_load_balancer_configuration" -> null
+      - name                               = "nkosi-paysw-eu" -> null
+      - port                               = 7000 -> null
+      - preserve_client_ip                 = "false" -> null
+      - protocol                           = "TCP" -> null
+      - proxy_protocol_v2                  = false -> null
+      - region                             = "eu-west-1" -> null
+      - slow_start                         = 0 -> null
+      - tags                               = {} -> null
+      - tags_all                           = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - target_control_port                = 0 -> null
+      - target_type                        = "instance" -> null
+      - vpc_id                             = "vpc-08455d74a7b626599" -> null
+        # (1 unchanged attribute hidden)
+
+      - health_check {
+          - enabled             = true -> null
+          - healthy_threshold   = 2 -> null
+          - interval            = 10 -> null
+          - port                = "7000" -> null
+          - protocol            = "TCP" -> null
+          - timeout             = 10 -> null
+          - unhealthy_threshold = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+
+      - stickiness {
+          - cookie_duration = 0 -> null
+          - enabled         = false -> null
+          - type            = "source_ip" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - target_failover {}
+
+      - target_group_health {
+          - dns_failover {
+              - minimum_healthy_targets_count      = "1" -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+          - unhealthy_state_routing {
+              - minimum_healthy_targets_count      = 1 -> null
+              - minimum_healthy_targets_percentage = "off" -> null
+            }
+        }
+
+      - target_health_state {
+          - enable_unhealthy_connection_termination = true -> null
+          - unhealthy_draining_interval             = 0 -> null
+        }
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["canary"] will be destroyed
+  - resource "aws_lb_target_group_attachment" "this" {
+      - id               = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159,i-09a4e114a8772a725,7000" -> null
+      - port             = 7000 -> null
+      - region           = "eu-west-1" -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159" -> null
+      - target_id        = "i-09a4e114a8772a725" -> null
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["switch-0"] will be destroyed
+  - resource "aws_lb_target_group_attachment" "this" {
+      - id               = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0c40d2dd6faff5e7f,7000" -> null
+      - port             = 7000 -> null
+      - region           = "eu-west-1" -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+      - target_id        = "i-0c40d2dd6faff5e7f" -> null
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["switch-1"] will be destroyed
+  - resource "aws_lb_target_group_attachment" "this" {
+      - id               = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0add9540a72758534,7000" -> null
+      - port             = 7000 -> null
+      - region           = "eu-west-1" -> null
+      - target_group_arn = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e" -> null
+      - target_id        = "i-0add9540a72758534" -> null
+    }
+
+  # module.primary.aws_route.internet will be destroyed
+  - resource "aws_route" "internet" {
+      - destination_cidr_block      = "0.0.0.0/0" -> null
+      - gateway_id                  = "igw-0b96ac107ace87f40" -> null
+      - id                          = "r-rtb-07190dd092e854a081080289494" -> null
+      - origin                      = "CreateRoute" -> null
+      - region                      = "eu-west-1" -> null
+      - route_table_id              = "rtb-07190dd092e854a08" -> null
+      - state                       = "active" -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # module.primary.aws_route_table.public will be destroyed
+  - resource "aws_route_table" "public" {
+      - arn              = "arn:aws:ec2:eu-west-1:<account-id>:route-table/rtb-07190dd092e854a08" -> null
+      - id               = "rtb-07190dd092e854a08" -> null
+      - owner_id         = "<account-id>" -> null
+      - propagating_vgws = [] -> null
+      - region           = "eu-west-1" -> null
+      - route            = [
+          - {
+              - cidr_block                 = "0.0.0.0/0"
+              - gateway_id                 = "igw-0b96ac107ace87f40"
+                # (12 unchanged attributes hidden)
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "nkosi-paysw-eu-public-rt"
+        } -> null
+      - tags_all         = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-public-rt"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id           = "vpc-08455d74a7b626599" -> null
+    }
+
+  # module.primary.aws_route_table_association.public[0] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0f85f97679982df66" -> null
+      - region         = "eu-west-1" -> null
+      - route_table_id = "rtb-07190dd092e854a08" -> null
+      - subnet_id      = "subnet-0121c213bef0be1d5" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.primary.aws_route_table_association.public[1] will be destroyed
+  - resource "aws_route_table_association" "public" {
+      - id             = "rtbassoc-0fd9731bf3e71fa80" -> null
+      - region         = "eu-west-1" -> null
+      - route_table_id = "rtb-07190dd092e854a08" -> null
+      - subnet_id      = "subnet-0d5b43b9f27ecc262" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.primary.aws_security_group.switch will be destroyed
+  - resource "aws_security_group" "switch" {
+      - arn                    = "arn:aws:ec2:eu-west-1:<account-id>:security-group/sg-0d3edaa4dbc1c35d8" -> null
+      - description            = "Payment switch - port 7000 from inside the VPC (the NLB) only" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Outbound: SSM, package repositories"
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0d3edaa4dbc1c35d8" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "10.150.0.0/16",
+                ]
+              - description      = "TCP 7000 from the NLB (its addresses are inside the VPC)"
+              - from_port        = 7000
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 7000
+            },
+        ] -> null
+      - name                   = "nkosi-paysw-eu-switch-sg" -> null
+      - owner_id               = "<account-id>" -> null
+      - region                 = "eu-west-1" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "nkosi-paysw-eu-switch-sg"
+        } -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-switch-sg"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                 = "vpc-08455d74a7b626599" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.primary.aws_subnet.public[0] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:eu-west-1:<account-id>:subnet/subnet-0121c213bef0be1d5" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "eu-west-1a" -> null
+      - availability_zone_id                           = "euw1-az2" -> null
+      - cidr_block                                     = "10.150.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0121c213bef0be1d5" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "<account-id>" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "eu-west-1" -> null
+      - tags                                           = {
+          - "Name" = "nkosi-paysw-eu-public-0"
+        } -> null
+      - tags_all                                       = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-public-0"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                         = "vpc-08455d74a7b626599" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.primary.aws_subnet.public[1] will be destroyed
+  - resource "aws_subnet" "public" {
+      - arn                                            = "arn:aws:ec2:eu-west-1:<account-id>:subnet/subnet-0d5b43b9f27ecc262" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "eu-west-1b" -> null
+      - availability_zone_id                           = "euw1-az3" -> null
+      - cidr_block                                     = "10.150.2.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0d5b43b9f27ecc262" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "<account-id>" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - region                                         = "eu-west-1" -> null
+      - tags                                           = {
+          - "Name" = "nkosi-paysw-eu-public-1"
+        } -> null
+      - tags_all                                       = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-public-1"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - vpc_id                                         = "vpc-08455d74a7b626599" -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.primary.aws_vpc.this will be destroyed
+  - resource "aws_vpc" "this" {
+      - arn                                  = "arn:aws:ec2:eu-west-1:<account-id>:vpc/vpc-08455d74a7b626599" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.150.0.0/16" -> null
+      - default_network_acl_id               = "acl-0ad2228dd33f8abef" -> null
+      - default_route_table_id               = "rtb-0aff23bbf84a061da" -> null
+      - default_security_group_id            = "sg-0eb4d957a5e7f2419" -> null
+      - dhcp_options_id                      = "dopt-0402c39bb5a433b7c" -> null
+      - enable_dns_hostnames                 = true -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-08455d74a7b626599" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-0aff23bbf84a061da" -> null
+      - owner_id                             = "<account-id>" -> null
+      - region                               = "eu-west-1" -> null
+      - tags                                 = {
+          - "Name" = "nkosi-paysw-eu-vpc"
+        } -> null
+      - tags_all                             = {
+          - "ManagedBy" = "terraform"
+          - "Name"      = "nkosi-paysw-eu-vpc"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+        # (4 unchanged attributes hidden)
+    }
+
+  # module.primary.aws_vpc_security_group_egress_rule.all will be destroyed
+  - resource "aws_vpc_security_group_egress_rule" "all" {
+      - arn                    = "arn:aws:ec2:eu-west-1:<account-id>:security-group-rule/sgr-06f2d96b4bdece6c9" -> null
+      - cidr_ipv4              = "0.0.0.0/0" -> null
+      - description            = "Outbound: SSM, package repositories" -> null
+      - id                     = "sgr-06f2d96b4bdece6c9" -> null
+      - ip_protocol            = "-1" -> null
+      - region                 = "eu-west-1" -> null
+      - security_group_id      = "sg-0d3edaa4dbc1c35d8" -> null
+      - security_group_rule_id = "sgr-06f2d96b4bdece6c9" -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+    }
+
+  # module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch will be destroyed
+  - resource "aws_vpc_security_group_ingress_rule" "nlb_to_switch" {
+      - arn                    = "arn:aws:ec2:eu-west-1:<account-id>:security-group-rule/sgr-0697f68c2a88e8053" -> null
+      - cidr_ipv4              = "10.150.0.0/16" -> null
+      - description            = "TCP 7000 from the NLB (its addresses are inside the VPC)" -> null
+      - from_port              = 7000 -> null
+      - id                     = "sgr-0697f68c2a88e8053" -> null
+      - ip_protocol            = "tcp" -> null
+      - region                 = "eu-west-1" -> null
+      - security_group_id      = "sg-0d3edaa4dbc1c35d8" -> null
+      - security_group_rule_id = "sgr-0697f68c2a88e8053" -> null
+      - tags_all               = {
+          - "ManagedBy" = "terraform"
+          - "Project"   = "aws-global-accelerator-static-ips"
+        } -> null
+      - to_port                = 7000 -> null
+    }
+
+Plan: 0 to add, 0 to change, 48 to destroy.
+
+Changes to Outputs:
+  - accelerator_arn = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8" -> null
+  - accelerator_dns = "a68b840701c2ad124.awsglobalaccelerator.com" -> null
+  - endpoint_groups = {
+      - dr      = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002"
+      - primary = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700"
+    } -> null
+  - paysw_sha256    = "9a0d72f4522368cf26bc005eb74ee9fddd7cd8a001529a4e00d5abf51bdb9fe1" -> null
+  - regions         = {
+      - dr      = {
+          - instances = [
+              - "i-0581e2948846db3b5",
+              - "i-007d44cbd6a491f79",
+            ]
+          - nlb_dns   = "nkosi-paysw-us-e86bbc3a939cc46a.elb.us-east-1.amazonaws.com"
+          - region    = "us-east-1"
+        }
+      - primary = {
+          - canary_instance = "i-09a4e114a8772a725"
+          - canary_nlb_dns  = "nkosi-paysw-eu-canary-74df44cb31a03b17.elb.eu-west-1.amazonaws.com"
+          - instances       = [
+              - "i-0c40d2dd6faff5e7f",
+              - "i-0add9540a72758534",
+            ]
+          - nlb_dns         = "nkosi-paysw-eu-6f2baf321c5efce4.elb.eu-west-1.amazonaws.com"
+          - region          = "eu-west-1"
+        }
+    } -> null
+  - static_ips      = [
+      - "15.197.220.221",
+      - "166.117.216.165",
+    ] -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: 
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-007d44cbd6a491f79,7000]
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Destroying... [id=sgr-0fc337adce0ef44ca]
+aws_globalaccelerator_endpoint_group.dr: Destroying... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002]
+module.dr.aws_lb_listener.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81]
+module.primary.aws_lb_target_group_attachment.this["canary"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159,i-09a4e114a8772a725,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0add9540a72758534,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0c40d2dd6faff5e7f,7000]
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Destroying... [id=sgr-0697f68c2a88e8053]
+module.primary.aws_lb_listener.this["canary"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244]
+module.primary.aws_lb_listener.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964]
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Destruction complete after 1s
+module.primary.aws_lb_target_group_attachment.this["canary"]: Destruction complete after 1s
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-0581e2948846db3b5,7000]
+module.primary.aws_lb_listener.this["main"]: Destruction complete after 1s
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Destruction complete after 1s
+module.primary.aws_instance.switch["switch-1"]: Destroying... [id=i-0add9540a72758534]
+module.primary.aws_instance.switch["switch-0"]: Destroying... [id=i-0c40d2dd6faff5e7f]
+module.primary.aws_instance.switch["canary"]: Destroying... [id=i-09a4e114a8772a725]
+module.primary.aws_lb_listener.this["canary"]: Destruction complete after 1s
+module.primary.aws_lb_target_group.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e]
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Destruction complete after 1s
+module.primary.aws_lb_target_group.this["canary"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159]
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Destruction complete after 1s
+module.dr.aws_lb_listener.this["main"]: Destruction complete after 2s
+module.primary.aws_lb_target_group.this["main"]: Destruction complete after 1s
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Destruction complete after 2s
+module.primary.aws_lb_target_group.this["canary"]: Destruction complete after 1s
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Destruction complete after 1s
+module.dr.aws_lb_target_group.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700]
+module.dr.aws_instance.switch["switch-0"]: Destroying... [id=i-0581e2948846db3b5]
+module.dr.aws_instance.switch["switch-1"]: Destroying... [id=i-007d44cbd6a491f79]
+aws_globalaccelerator_endpoint_group.dr: Destruction complete after 2s
+aws_globalaccelerator_endpoint_group.primary: Destroying... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+module.dr.aws_lb.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a]
+module.dr.aws_lb_target_group.this["main"]: Destruction complete after 0s
+aws_globalaccelerator_endpoint_group.primary: Destruction complete after 1s
+aws_globalaccelerator_listener.tcp7000: Destroying... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1]
+module.primary.aws_lb.this["main"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4]
+module.primary.aws_lb.this["canary"]: Destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17]
+module.primary.aws_instance.switch["switch-1"]: Still destroying... [id=i-0add9540a72758534, 00m10s elapsed]
+module.primary.aws_instance.switch["switch-0"]: Still destroying... [id=i-0c40d2dd6faff5e7f, 00m10s elapsed]
+module.primary.aws_instance.switch["canary"]: Still destroying... [id=i-09a4e114a8772a725, 00m10s elapsed]
+module.dr.aws_instance.switch["switch-0"]: Still destroying... [id=i-0581e2948846db3b5, 00m10s elapsed]
+module.dr.aws_instance.switch["switch-1"]: Still destroying... [id=i-007d44cbd6a491f79, 00m10s elapsed]
+module.dr.aws_lb.this["main"]: Still destroying... [id=arn:aws:elasticloadbalancing:us-east-1:...er/net/nkosi-paysw-us/e86bbc3a939cc46a, 00m10s elapsed]
+aws_globalaccelerator_listener.tcp7000: Still destroying... [id=arn:aws:globalaccelerator::<account-id>...3d-bb4b-eeb7f77908f8/listener/4d97f8c1, 00m10s elapsed]
+module.primary.aws_lb.this["main"]: Still destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:...er/net/nkosi-paysw-eu/6f2baf321c5efce4, 00m10s elapsed]
+module.primary.aws_lb.this["canary"]: Still destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:...nkosi-paysw-eu-canary/74df44cb31a03b17, 00m10s elapsed]
+module.dr.aws_lb.this["main"]: Destruction complete after 19s
+module.primary.aws_instance.switch["switch-1"]: Still destroying... [id=i-0add9540a72758534, 00m20s elapsed]
+module.primary.aws_instance.switch["switch-0"]: Still destroying... [id=i-0c40d2dd6faff5e7f, 00m20s elapsed]
+module.primary.aws_instance.switch["canary"]: Still destroying... [id=i-09a4e114a8772a725, 00m20s elapsed]
+module.dr.aws_instance.switch["switch-0"]: Still destroying... [id=i-0581e2948846db3b5, 00m20s elapsed]
+module.dr.aws_instance.switch["switch-1"]: Still destroying... [id=i-007d44cbd6a491f79, 00m20s elapsed]
+aws_globalaccelerator_listener.tcp7000: Still destroying... [id=arn:aws:globalaccelerator::<account-id>...3d-bb4b-eeb7f77908f8/listener/4d97f8c1, 00m20s elapsed]
+module.primary.aws_lb.this["main"]: Still destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:...er/net/nkosi-paysw-eu/6f2baf321c5efce4, 00m20s elapsed]
+module.primary.aws_lb.this["canary"]: Still destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:...nkosi-paysw-eu-canary/74df44cb31a03b17, 00m20s elapsed]
+module.primary.aws_instance.switch["switch-1"]: Destruction complete after 22s
+module.primary.aws_instance.switch["canary"]: Destruction complete after 22s
+module.dr.aws_instance.switch["switch-1"]: Destruction complete after 21s
+aws_globalaccelerator_listener.tcp7000: Destruction complete after 27s
+aws_globalaccelerator_accelerator.paysw: Destroying... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8]
+module.primary.aws_instance.switch["switch-0"]: Still destroying... [id=i-0c40d2dd6faff5e7f, 00m30s elapsed]
+module.primary.aws_lb.this["main"]: Destruction complete after 28s
+module.dr.aws_instance.switch["switch-0"]: Still destroying... [id=i-0581e2948846db3b5, 00m30s elapsed]
+module.primary.aws_lb.this["canary"]: Still destroying... [id=arn:aws:elasticloadbalancing:eu-west-1:...nkosi-paysw-eu-canary/74df44cb31a03b17, 00m30s elapsed]
+module.primary.aws_instance.switch["switch-0"]: Destruction complete after 32s
+module.primary.aws_route_table_association.public[1]: Destroying... [id=rtbassoc-0fd9731bf3e71fa80]
+module.primary.aws_route.internet: Destroying... [id=r-rtb-07190dd092e854a081080289494]
+module.primary.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0f85f97679982df66]
+module.primary.aws_vpc_security_group_egress_rule.all: Destroying... [id=sgr-06f2d96b4bdece6c9]
+module.primary.aws_vpc_security_group_egress_rule.all: Destruction complete after 1s
+module.primary.aws_security_group.switch: Destroying... [id=sg-0d3edaa4dbc1c35d8]
+module.primary.aws_route_table_association.public[0]: Destruction complete after 1s
+module.primary.aws_route_table_association.public[1]: Destruction complete after 1s
+module.dr.aws_instance.switch["switch-0"]: Destruction complete after 32s
+module.dr.aws_route.internet: Destroying... [id=r-rtb-047b5fbdf75bd03681080289494]
+module.dr.aws_route_table_association.public[1]: Destroying... [id=rtbassoc-0426b2c11888b14da]
+module.dr.aws_vpc_security_group_egress_rule.all: Destroying... [id=sgr-06ff8fc31e6c4e75a]
+aws_iam_instance_profile.switch: Destroying... [id=nkosi-paysw-profile]
+module.dr.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0e41817150bf061ab]
+module.primary.aws_route.internet: Destruction complete after 1s
+module.primary.aws_internet_gateway.this: Destroying... [id=igw-0b96ac107ace87f40]
+module.primary.aws_route_table.public: Destroying... [id=rtb-07190dd092e854a08]
+module.dr.aws_route_table_association.public[0]: Destruction complete after 1s
+module.dr.aws_vpc_security_group_egress_rule.all: Destruction complete after 1s
+module.dr.aws_security_group.switch: Destroying... [id=sg-0f12bc2efd487a470]
+module.primary.aws_security_group.switch: Destruction complete after 1s
+module.dr.aws_route_table_association.public[1]: Destruction complete after 1s
+module.dr.aws_subnet.public[0]: Destroying... [id=subnet-0a594e5e25d91facf]
+module.dr.aws_subnet.public[1]: Destroying... [id=subnet-007c3ee1e14d2ef1b]
+module.dr.aws_route.internet: Destruction complete after 1s
+module.dr.aws_internet_gateway.this: Destroying... [id=igw-08f97302db0420433]
+module.dr.aws_route_table.public: Destroying... [id=rtb-047b5fbdf75bd0368]
+aws_iam_instance_profile.switch: Destruction complete after 1s
+module.dr.aws_subnet.public[1]: Destruction complete after 1s
+module.dr.aws_subnet.public[0]: Destruction complete after 1s
+module.dr.aws_security_group.switch: Destruction complete after 1s
+module.primary.aws_route_table.public: Destruction complete after 2s
+module.dr.aws_internet_gateway.this: Destruction complete after 2s
+module.dr.aws_route_table.public: Destruction complete after 2s
+module.dr.aws_vpc.this: Destroying... [id=vpc-028a9d9b695a35796]
+module.dr.aws_vpc.this: Destruction complete after 1s
+aws_globalaccelerator_accelerator.paysw: Still destroying... [id=arn:aws:globalaccelerator::<account-id>...r/8193d292-627c-443d-bb4b-eeb7f77908f8, 00m10s elapsed]
+module.primary.aws_internet_gateway.this: Destruction complete after 8s
+module.primary.aws_lb.this["canary"]: Destruction complete after 39s
+module.primary.aws_subnet.public[0]: Destroying... [id=subnet-0121c213bef0be1d5]
+module.primary.aws_subnet.public[1]: Destroying... [id=subnet-0d5b43b9f27ecc262]
+module.primary.aws_subnet.public[0]: Destruction complete after 1s
+module.primary.aws_subnet.public[1]: Destruction complete after 1s
+module.primary.aws_vpc.this: Destroying... [id=vpc-08455d74a7b626599]
+module.primary.aws_vpc.this: Destruction complete after 2s
+aws_iam_role_policy_attachment.switch_ssm: Destroying... [id=nkosi-paysw-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+aws_iam_role_policy_attachment.switch_ssm: Destruction complete after 0s
+aws_iam_role.switch: Destroying... [id=nkosi-paysw-role]
+aws_iam_role.switch: Destruction complete after 1s
+aws_globalaccelerator_accelerator.paysw: Still destroying... [id=arn:aws:globalaccelerator::<account-id>...r/8193d292-627c-443d-bb4b-eeb7f77908f8, 00m20s elapsed]
+aws_globalaccelerator_accelerator.paysw: Still destroying... [id=arn:aws:globalaccelerator::<account-id>...r/8193d292-627c-443d-bb4b-eeb7f77908f8, 00m30s elapsed]
+aws_globalaccelerator_accelerator.paysw: Destruction complete after 38s
+Releasing state lock. This may take a few moments...
+
+Destroy complete! Resources: 48 destroyed.

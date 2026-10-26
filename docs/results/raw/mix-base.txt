@@ -1,0 +1,3 @@
+200 connections over both static IPs:
+  eu-west-1 main NLB          200  (100.0%)
+saved /home/michael/global-accelerator/build/results/mix-base.json

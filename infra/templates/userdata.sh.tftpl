@@ -1,0 +1,29 @@
+#!/bin/bash
+# Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+# settings, and a systemd service listening on TCP 7000.
+set -euxo pipefail
+mkdir -p /opt/paysw
+echo '${code_b64}' | base64 -d > /opt/paysw/paysw.py
+cat > /etc/paysw.conf <<'CONF'
+REGION=${region}
+ROLE=${role}
+CONF
+cat > /etc/systemd/system/paysw.service <<'UNIT'
+[Unit]
+Description=Nkosi Payments authorisation switch (TCP 7000)
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+systemctl daemon-reload
+systemctl enable --now paysw
+sleep 2
+systemctl is-active paysw
+sha256sum /opt/paysw/paysw.py
+echo "paysw ready in ${region} (${role})"

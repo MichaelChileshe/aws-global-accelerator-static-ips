@@ -1,0 +1,1718 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # aws_globalaccelerator_accelerator.paysw will be created
+  + resource "aws_globalaccelerator_accelerator" "paysw" {
+      + arn                 = (known after apply)
+      + dns_name            = (known after apply)
+      + dual_stack_dns_name = (known after apply)
+      + enabled             = true
+      + hosted_zone_id      = (known after apply)
+      + id                  = (known after apply)
+      + ip_address_type     = "IPV4"
+      + ip_sets             = (known after apply)
+      + name                = "nkosi-paysw"
+      + tags_all            = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+    }
+
+  # aws_globalaccelerator_endpoint_group.dr will be created
+  + resource "aws_globalaccelerator_endpoint_group" "dr" {
+      + arn                           = (known after apply)
+      + endpoint_group_region         = "us-east-1"
+      + health_check_interval_seconds = 10
+      + health_check_path             = (known after apply)
+      + health_check_port             = 7000
+      + health_check_protocol         = "TCP"
+      + id                            = (known after apply)
+      + listener_arn                  = (known after apply)
+      + threshold_count               = 3
+      + traffic_dial_percentage       = 100
+
+      + endpoint_configuration {
+          + client_ip_preservation_enabled = false
+          + endpoint_id                    = (known after apply)
+          + weight                         = 128
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_globalaccelerator_endpoint_group.primary will be created
+  + resource "aws_globalaccelerator_endpoint_group" "primary" {
+      + arn                           = (known after apply)
+      + endpoint_group_region         = "eu-west-1"
+      + health_check_interval_seconds = 10
+      + health_check_path             = (known after apply)
+      + health_check_port             = 7000
+      + health_check_protocol         = "TCP"
+      + id                            = (known after apply)
+      + listener_arn                  = (known after apply)
+      + threshold_count               = 3
+      + traffic_dial_percentage       = 100
+
+      + endpoint_configuration {
+          + client_ip_preservation_enabled = false
+          + endpoint_id                    = (known after apply)
+          + weight                         = 0
+            # (1 unchanged attribute hidden)
+        }
+      + endpoint_configuration {
+          + client_ip_preservation_enabled = false
+          + endpoint_id                    = (known after apply)
+          + weight                         = 200
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # aws_globalaccelerator_listener.tcp7000 will be created
+  + resource "aws_globalaccelerator_listener" "tcp7000" {
+      + accelerator_arn = (known after apply)
+      + arn             = (known after apply)
+      + client_affinity = "NONE"
+      + id              = (known after apply)
+      + protocol        = "TCP"
+
+      + port_range {
+          + from_port = 7000
+          + to_port   = 7000
+        }
+    }
+
+  # aws_iam_instance_profile.switch will be created
+  + resource "aws_iam_instance_profile" "switch" {
+      + arn         = (known after apply)
+      + create_date = (known after apply)
+      + id          = (known after apply)
+      + name        = "nkosi-paysw-profile"
+      + name_prefix = (known after apply)
+      + path        = "/"
+      + role        = "nkosi-paysw-role"
+      + tags_all    = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + unique_id   = (known after apply)
+    }
+
+  # aws_iam_role.switch will be created
+  + resource "aws_iam_role" "switch" {
+      + arn                   = (known after apply)
+      + assume_role_policy    = jsonencode(
+            {
+              + Statement = [
+                  + {
+                      + Action    = "sts:AssumeRole"
+                      + Effect    = "Allow"
+                      + Principal = {
+                          + Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              + Version   = "2012-10-17"
+            }
+        )
+      + create_date           = (known after apply)
+      + force_detach_policies = false
+      + id                    = (known after apply)
+      + managed_policy_arns   = (known after apply)
+      + max_session_duration  = 3600
+      + name                  = "nkosi-paysw-role"
+      + name_prefix           = (known after apply)
+      + path                  = "/"
+      + tags_all              = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + unique_id             = (known after apply)
+
+      + inline_policy (known after apply)
+    }
+
+  # aws_iam_role_policy_attachment.switch_ssm will be created
+  + resource "aws_iam_role_policy_attachment" "switch_ssm" {
+      + id         = (known after apply)
+      + policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+      + role       = "nkosi-paysw-role"
+    }
+
+  # module.dr.data.aws_availability_zones.available will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "aws_availability_zones" "available" {
+      + group_names = (known after apply)
+      + id          = (known after apply)
+      + names       = (known after apply)
+      + region      = (known after apply)
+      + state       = "available"
+      + zone_ids    = (known after apply)
+    }
+
+  # module.dr.data.aws_ssm_parameter.al2023_arm will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "aws_ssm_parameter" "al2023_arm" {
+      + arn            = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + name           = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64"
+      + region         = (known after apply)
+      + type           = (known after apply)
+      + value          = (sensitive value)
+      + version        = (known after apply)
+    }
+
+  # module.dr.aws_instance.switch["switch-0"] will be created
+  + resource "aws_instance" "switch" {
+      + ami                                  = (known after apply)
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "nkosi-paysw-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t4g.nano"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name"       = "nkosi-paysw-us-switch-0"
+          + "SwitchRole" = "main"
+        }
+      + tags_all                             = {
+          + "ManagedBy"  = "terraform"
+          + "Name"       = "nkosi-paysw-us-switch-0"
+          + "Project"    = "aws-global-accelerator-static-ips"
+          + "SwitchRole" = "main"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=us-east-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in us-east-1 (main)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.dr.aws_instance.switch["switch-1"] will be created
+  + resource "aws_instance" "switch" {
+      + ami                                  = (known after apply)
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "nkosi-paysw-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t4g.nano"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "us-east-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name"       = "nkosi-paysw-us-switch-1"
+          + "SwitchRole" = "main"
+        }
+      + tags_all                             = {
+          + "ManagedBy"  = "terraform"
+          + "Name"       = "nkosi-paysw-us-switch-1"
+          + "Project"    = "aws-global-accelerator-static-ips"
+          + "SwitchRole" = "main"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=us-east-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in us-east-1 (main)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.dr.aws_internet_gateway.this will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "us-east-1"
+      + tags     = {
+          + "Name" = "nkosi-paysw-us-igw"
+        }
+      + tags_all = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-igw"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.dr.aws_lb.this["main"] will be created
+  + resource "aws_lb" "this" {
+      + arn                                                          = (known after apply)
+      + arn_suffix                                                   = (known after apply)
+      + dns_name                                                     = (known after apply)
+      + dns_record_client_routing_policy                             = "any_availability_zone"
+      + enable_cross_zone_load_balancing                             = true
+      + enable_deletion_protection                                   = false
+      + enable_prefix_for_ipv6_source_nat                            = (known after apply)
+      + enable_zonal_shift                                           = false
+      + enforce_security_group_inbound_rules_on_private_link_traffic = (known after apply)
+      + id                                                           = (known after apply)
+      + internal                                                     = false
+      + ip_address_type                                              = (known after apply)
+      + load_balancer_type                                           = "network"
+      + name                                                         = "nkosi-paysw-us"
+      + name_prefix                                                  = (known after apply)
+      + region                                                       = "us-east-1"
+      + secondary_ips_auto_assigned_per_subnet                       = (known after apply)
+      + security_groups                                              = (known after apply)
+      + subnets                                                      = (known after apply)
+      + tags_all                                                     = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                                       = (known after apply)
+      + zone_id                                                      = (known after apply)
+
+      + subnet_mapping (known after apply)
+    }
+
+  # module.dr.aws_lb_listener.this["main"] will be created
+  + resource "aws_lb_listener" "this" {
+      + arn                                                                   = (known after apply)
+      + id                                                                    = (known after apply)
+      + load_balancer_arn                                                     = (known after apply)
+      + port                                                                  = 7000
+      + protocol                                                              = "TCP"
+      + region                                                                = "us-east-1"
+      + routing_http_request_x_amzn_mtls_clientcert_header_name               = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_issuer_header_name        = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_leaf_header_name          = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_subject_header_name       = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_validity_header_name      = (known after apply)
+      + routing_http_request_x_amzn_tls_cipher_suite_header_name              = (known after apply)
+      + routing_http_request_x_amzn_tls_version_header_name                   = (known after apply)
+      + routing_http_response_access_control_allow_credentials_header_value   = (known after apply)
+      + routing_http_response_access_control_allow_headers_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_methods_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_origin_header_value        = (known after apply)
+      + routing_http_response_access_control_expose_headers_header_value      = (known after apply)
+      + routing_http_response_access_control_max_age_header_value             = (known after apply)
+      + routing_http_response_content_security_policy_header_value            = (known after apply)
+      + routing_http_response_server_enabled                                  = (known after apply)
+      + routing_http_response_strict_transport_security_header_value          = (known after apply)
+      + routing_http_response_x_content_type_options_header_value             = (known after apply)
+      + routing_http_response_x_frame_options_header_value                    = (known after apply)
+      + ssl_policy                                                            = (known after apply)
+      + tags_all                                                              = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + tcp_idle_timeout_seconds                                              = (known after apply)
+
+      + default_action {
+          + order            = (known after apply)
+          + target_group_arn = (known after apply)
+          + type             = "forward"
+        }
+
+      + mutual_authentication (known after apply)
+    }
+
+  # module.dr.aws_lb_target_group.this["main"] will be created
+  + resource "aws_lb_target_group" "this" {
+      + arn                                = (known after apply)
+      + arn_suffix                         = (known after apply)
+      + connection_termination             = (known after apply)
+      + deregistration_delay               = "10"
+      + id                                 = (known after apply)
+      + ip_address_type                    = (known after apply)
+      + lambda_multi_value_headers_enabled = false
+      + load_balancer_arns                 = (known after apply)
+      + load_balancing_algorithm_type      = (known after apply)
+      + load_balancing_anomaly_mitigation  = (known after apply)
+      + load_balancing_cross_zone_enabled  = (known after apply)
+      + name                               = "nkosi-paysw-us"
+      + name_prefix                        = (known after apply)
+      + port                               = 7000
+      + preserve_client_ip                 = "false"
+      + protocol                           = "TCP"
+      + protocol_version                   = (known after apply)
+      + proxy_protocol_v2                  = false
+      + region                             = "us-east-1"
+      + slow_start                         = 0
+      + tags_all                           = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + target_type                        = "instance"
+      + vpc_id                             = (known after apply)
+
+      + health_check {
+          + enabled             = true
+          + healthy_threshold   = 2
+          + interval            = 10
+          + matcher             = (known after apply)
+          + path                = (known after apply)
+          + port                = "7000"
+          + protocol            = "TCP"
+          + timeout             = (known after apply)
+          + unhealthy_threshold = 2
+        }
+
+      + stickiness (known after apply)
+
+      + target_failover (known after apply)
+
+      + target_group_health (known after apply)
+
+      + target_health_state (known after apply)
+    }
+
+  # module.dr.aws_lb_target_group_attachment.this["switch-0"] will be created
+  + resource "aws_lb_target_group_attachment" "this" {
+      + id               = (known after apply)
+      + port             = 7000
+      + region           = "us-east-1"
+      + target_group_arn = (known after apply)
+      + target_id        = (known after apply)
+    }
+
+  # module.dr.aws_lb_target_group_attachment.this["switch-1"] will be created
+  + resource "aws_lb_target_group_attachment" "this" {
+      + id               = (known after apply)
+      + port             = 7000
+      + region           = "us-east-1"
+      + target_group_arn = (known after apply)
+      + target_id        = (known after apply)
+    }
+
+  # module.dr.aws_route.internet will be created
+  + resource "aws_route" "internet" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + region                 = "us-east-1"
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # module.dr.aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "us-east-1"
+      + route            = (known after apply)
+      + tags             = {
+          + "Name" = "nkosi-paysw-us-public-rt"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-public-rt"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.dr.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + region         = "us-east-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.dr.aws_route_table_association.public[1] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + region         = "us-east-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.dr.aws_security_group.switch will be created
+  + resource "aws_security_group" "switch" {
+      + arn                    = (known after apply)
+      + description            = "Payment switch - port 7000 from inside the VPC (the NLB) only"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = "nkosi-paysw-us-switch-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "us-east-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "nkosi-paysw-us-switch-sg"
+        }
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-switch-sg"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # module.dr.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = (known after apply)
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.151.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "us-east-1"
+      + tags                                           = {
+          + "Name" = "nkosi-paysw-us-public-0"
+        }
+      + tags_all                                       = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-public-0"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.dr.aws_subnet.public[1] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = (known after apply)
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.151.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "us-east-1"
+      + tags                                           = {
+          + "Name" = "nkosi-paysw-us-public-1"
+        }
+      + tags_all                                       = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-public-1"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.dr.aws_vpc.this will be created
+  + resource "aws_vpc" "this" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.151.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "us-east-1"
+      + tags                                 = {
+          + "Name" = "nkosi-paysw-us-vpc"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-us-vpc"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+    }
+
+  # module.dr.aws_vpc_security_group_egress_rule.all will be created
+  + resource "aws_vpc_security_group_egress_rule" "all" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + description            = "Outbound: SSM, package repositories"
+      + id                     = (known after apply)
+      + ip_protocol            = "-1"
+      + region                 = "us-east-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+    }
+
+  # module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch will be created
+  + resource "aws_vpc_security_group_ingress_rule" "nlb_to_switch" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "10.151.0.0/16"
+      + description            = "TCP 7000 from the NLB (its addresses are inside the VPC)"
+      + from_port              = 7000
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + region                 = "us-east-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + to_port                = 7000
+    }
+
+  # module.primary.data.aws_availability_zones.available will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "aws_availability_zones" "available" {
+      + group_names = (known after apply)
+      + id          = (known after apply)
+      + names       = (known after apply)
+      + region      = (known after apply)
+      + state       = "available"
+      + zone_ids    = (known after apply)
+    }
+
+  # module.primary.data.aws_ssm_parameter.al2023_arm will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "aws_ssm_parameter" "al2023_arm" {
+      + arn            = (known after apply)
+      + id             = (known after apply)
+      + insecure_value = (known after apply)
+      + name           = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64"
+      + region         = (known after apply)
+      + type           = (known after apply)
+      + value          = (sensitive value)
+      + version        = (known after apply)
+    }
+
+  # module.primary.aws_instance.switch["canary"] will be created
+  + resource "aws_instance" "switch" {
+      + ami                                  = (known after apply)
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "nkosi-paysw-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t4g.nano"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "eu-west-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name"       = "nkosi-paysw-eu-canary"
+          + "SwitchRole" = "canary"
+        }
+      + tags_all                             = {
+          + "ManagedBy"  = "terraform"
+          + "Name"       = "nkosi-paysw-eu-canary"
+          + "Project"    = "aws-global-accelerator-static-ips"
+          + "SwitchRole" = "canary"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=canary
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (canary)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.primary.aws_instance.switch["switch-0"] will be created
+  + resource "aws_instance" "switch" {
+      + ami                                  = (known after apply)
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "nkosi-paysw-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t4g.nano"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "eu-west-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name"       = "nkosi-paysw-eu-switch-0"
+          + "SwitchRole" = "main"
+        }
+      + tags_all                             = {
+          + "ManagedBy"  = "terraform"
+          + "Name"       = "nkosi-paysw-eu-switch-0"
+          + "Project"    = "aws-global-accelerator-static-ips"
+          + "SwitchRole" = "main"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (main)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.primary.aws_instance.switch["switch-1"] will be created
+  + resource "aws_instance" "switch" {
+      + ami                                  = (known after apply)
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = (known after apply)
+      + ebs_optimized                        = (known after apply)
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "nkosi-paysw-profile"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "t4g.nano"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = (known after apply)
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "eu-west-1"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = (known after apply)
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = (known after apply)
+      + tags                                 = {
+          + "Name"       = "nkosi-paysw-eu-switch-1"
+          + "SwitchRole" = "main"
+        }
+      + tags_all                             = {
+          + "ManagedBy"  = "terraform"
+          + "Name"       = "nkosi-paysw-eu-switch-1"
+          + "Project"    = "aws-global-accelerator-static-ips"
+          + "SwitchRole" = "main"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            # Boot script for a payment switch instance (rendered by Terraform): the switch code, its
+            # settings, and a systemd service listening on TCP 7000.
+            set -euxo pipefail
+            mkdir -p /opt/paysw
+            echo 'IiIicGF5c3c6IE5rb3NpIFBheW1lbnRzJyBjYXJkLWF1dGhvcmlzYXRpb24gc3dpdGNoLCBhcyBzbWFsbCBhcyBpdCBjYW4gYmUuCgpDYXJkIHRlcm1pbmFscyBvcGVuIGEgVENQIGNvbm5lY3Rpb24gdG8gcG9ydCA3MDAwLCBzZW5kIG9uZSBsaW5lIGFuZCByZWFkIG9uZSBsaW5lIGJhY2s6CgogIEFVVEggPHRlcm1pbmFsIGlkPiA8YW1vdW50IGluIGNlbnRzPiA8Y2xpZW50IHRpbWVzdGFtcCBtcz4KICAgIC0+IEFQUFJPVkVEIDxyZWdpb24+IDxpbnN0YW5jZSBpZD4gPGF1dGggY29kZT4gPGNsaWVudCB0aW1lc3RhbXAgbXM+IDxwZWVyIGFkZHJlc3M+CiAgUElORwogICAgLT4gUE9ORyA8cmVnaW9uPiA8aW5zdGFuY2UgaWQ+CgpSYXcgVENQLCBubyBIVFRQOiB0aGF0J3MgdGhlIHBvaW50LiBDYXJkIHRlcm1pbmFscyBpbiByZXRhaWxlcnMnIG5ldHdvcmtzIHNwZWFrIGEgVENQIHByb3RvY29sCmFuZCBjYW4gb25seSByZWFjaCBJUCBhZGRyZXNzZXMgdGhlIHJldGFpbGVyJ3MgZmlyZXdhbGwgYWxsb3dzLiBUaGUgYXV0aCBjb2RlIGlzIGRlcml2ZWQgZnJvbQp0aGUgcmVxdWVzdCwgc28gdGhlIHNhbWUgcmVxdWVzdCBnZXRzIHRoZSBzYW1lIGNvZGUgaW4gYW55IHJlZ2lvbi4KClNldHRpbmdzIGNvbWUgZnJvbSAvZXRjL3BheXN3LmNvbmYgKFJFR0lPTiwgd3JpdHRlbiBieSB0aGUgYm9vdCBzY3JpcHQpOyB0aGUgaW5zdGFuY2UgaWQgaXMKcmVhZCBmcm9tIHRoZSBpbnN0YW5jZSBtZXRhZGF0YSBzZXJ2aWNlIG9uY2UgYXQgc3RhcnQuCiIiIgppbXBvcnQgaGFzaGxpYgppbXBvcnQgc29ja2V0c2VydmVyCmltcG9ydCBzeXMKaW1wb3J0IHVybGxpYi5yZXF1ZXN0CgpQT1JUID0gNzAwMAoKCmRlZiBjb25mKCk6CiAgICBvdXQgPSB7fQogICAgdHJ5OgogICAgICAgIGZvciBsaW5lIGluIG9wZW4oIi9ldGMvcGF5c3cuY29uZiIpOgogICAgICAgICAgICBpZiAiPSIgaW4gbGluZToKICAgICAgICAgICAgICAgIGssIHYgPSBsaW5lLnN0cmlwKCkuc3BsaXQoIj0iLCAxKQogICAgICAgICAgICAgICAgb3V0W2tdID0gdgogICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgcGFzcwogICAgcmV0dXJuIG91dAoKCmRlZiBpbnN0YW5jZV9pZCgpOgogICAgdHJ5OgogICAgICAgIHJlcSA9IHVybGxpYi5yZXF1ZXN0LlJlcXVlc3QoImh0dHA6Ly8xNjkuMjU0LjE2OS4yNTQvbGF0ZXN0L2FwaS90b2tlbiIsIG1ldGhvZD0iUFVUIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9eyJYLWF3cy1lYzItbWV0YWRhdGEtdG9rZW4tdHRsLXNlY29uZHMiOiAiNjAifSkKICAgICAgICB0b2sgPSB1cmxsaWIucmVxdWVzdC51cmxvcGVuKHJlcSwgdGltZW91dD0yKS5yZWFkKCkuZGVjb2RlKCkKICAgICAgICByZXEgPSB1cmxsaWIucmVxdWVzdC5SZXF1ZXN0KCJodHRwOi8vMTY5LjI1NC4xNjkuMjU0L2xhdGVzdC9tZXRhLWRhdGEvaW5zdGFuY2UtaWQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVycz17IlgtYXdzLWVjMi1tZXRhZGF0YS10b2tlbiI6IHRva30pCiAgICAgICAgcmV0dXJuIHVybGxpYi5yZXF1ZXN0LnVybG9wZW4ocmVxLCB0aW1lb3V0PTIpLnJlYWQoKS5kZWNvZGUoKQogICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICByZXR1cm4gImxvY2FsIgoKClJFR0lPTiA9IGNvbmYoKS5nZXQoIlJFR0lPTiIsICJsb2NhbCIpCklJRCA9IGluc3RhbmNlX2lkKCkKCgpjbGFzcyBIYW5kbGVyKHNvY2tldHNlcnZlci5TdHJlYW1SZXF1ZXN0SGFuZGxlcik6CiAgICB0aW1lb3V0ID0gNQoKICAgIGRlZiBoYW5kbGUoc2VsZik6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBsaW5lID0gc2VsZi5yZmlsZS5yZWFkbGluZSgyNTYpLmRlY29kZShlcnJvcnM9InJlcGxhY2UiKS5zdHJpcCgpCiAgICAgICAgZXhjZXB0IE9TRXJyb3I6CiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCBsaW5lOiAgICAgICAgICAgICMgYSBoZWFsdGggY2hlY2s6IGNvbm5lY3QsIHRoZW4gY2xvc2UKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGFydHMgPSBsaW5lLnNwbGl0KCkKICAgICAgICBpZiBwYXJ0c1swXSA9PSAiUElORyI6CiAgICAgICAgICAgIHJlcGx5ID0gZiJQT05HIHtSRUdJT059IHtJSUR9IgogICAgICAgIGVsaWYgcGFydHNbMF0gPT0gIkFVVEgiIGFuZCBsZW4ocGFydHMpID09IDQ6CiAgICAgICAgICAgIGNvZGUgPSBoYXNobGliLnNoYTI1NigiICIuam9pbihwYXJ0c1sxOl0pLmVuY29kZSgpKS5oZXhkaWdlc3QoKVs6Nl0udXBwZXIoKQogICAgICAgICAgICByZXBseSA9IGYiQVBQUk9WRUQge1JFR0lPTn0ge0lJRH0ge2NvZGV9IHtwYXJ0c1szXX0ge3NlbGYuY2xpZW50X2FkZHJlc3NbMF19IgogICAgICAgIGVsc2U6CiAgICAgICAgICAgIHJlcGx5ID0gIkVSUk9SIGJhZC1yZXF1ZXN0IgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VsZi53ZmlsZS53cml0ZSgocmVwbHkgKyAiXG4iKS5lbmNvZGUoKSkKICAgICAgICBleGNlcHQgT1NFcnJvcjoKICAgICAgICAgICAgcGFzcwoKCmNsYXNzIFNlcnZlcihzb2NrZXRzZXJ2ZXIuVGhyZWFkaW5nVENQU2VydmVyKToKICAgIGFsbG93X3JldXNlX2FkZHJlc3MgPSBUcnVlCiAgICBkYWVtb25fdGhyZWFkcyA9IFRydWUKCgpkZWYgbWFpbigpOgogICAgcG9ydCA9IGludChzeXMuYXJndlsxXSkgaWYgbGVuKHN5cy5hcmd2KSA+IDEgZWxzZSBQT1JUCiAgICB3aXRoIFNlcnZlcigoIjAuMC4wLjAiLCBwb3J0KSwgSGFuZGxlcikgYXMgc3J2OgogICAgICAgIHByaW50KGYicGF5c3cgbGlzdGVuaW5nIG9uIHtwb3J0fSBpbiB7UkVHSU9OfSBhcyB7SUlEfSIsIGZsdXNoPVRydWUpCiAgICAgICAgc3J2LnNlcnZlX2ZvcmV2ZXIoKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK' | base64 -d > /opt/paysw/paysw.py
+            cat > /etc/paysw.conf <<'CONF'
+            REGION=eu-west-1
+            ROLE=main
+            CONF
+            cat > /etc/systemd/system/paysw.service <<'UNIT'
+            [Unit]
+            Description=Nkosi Payments authorisation switch (TCP 7000)
+            After=network-online.target
+            
+            [Service]
+            ExecStart=/usr/bin/python3 -u /opt/paysw/paysw.py
+            Restart=always
+            RestartSec=2
+            
+            [Install]
+            WantedBy=multi-user.target
+            UNIT
+            systemctl daemon-reload
+            systemctl enable --now paysw
+            sleep 2
+            systemctl is-active paysw
+            sha256sum /opt/paysw/paysw.py
+            echo "paysw ready in eu-west-1 (main)"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = true
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device (known after apply)
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = "gp3"
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.primary.aws_internet_gateway.this will be created
+  + resource "aws_internet_gateway" "this" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + owner_id = (known after apply)
+      + region   = "eu-west-1"
+      + tags     = {
+          + "Name" = "nkosi-paysw-eu-igw"
+        }
+      + tags_all = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-igw"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id   = (known after apply)
+    }
+
+  # module.primary.aws_lb.this["canary"] will be created
+  + resource "aws_lb" "this" {
+      + arn                                                          = (known after apply)
+      + arn_suffix                                                   = (known after apply)
+      + dns_name                                                     = (known after apply)
+      + dns_record_client_routing_policy                             = "any_availability_zone"
+      + enable_cross_zone_load_balancing                             = true
+      + enable_deletion_protection                                   = false
+      + enable_prefix_for_ipv6_source_nat                            = (known after apply)
+      + enable_zonal_shift                                           = false
+      + enforce_security_group_inbound_rules_on_private_link_traffic = (known after apply)
+      + id                                                           = (known after apply)
+      + internal                                                     = false
+      + ip_address_type                                              = (known after apply)
+      + load_balancer_type                                           = "network"
+      + name                                                         = "nkosi-paysw-eu-canary"
+      + name_prefix                                                  = (known after apply)
+      + region                                                       = "eu-west-1"
+      + secondary_ips_auto_assigned_per_subnet                       = (known after apply)
+      + security_groups                                              = (known after apply)
+      + subnets                                                      = (known after apply)
+      + tags_all                                                     = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                                       = (known after apply)
+      + zone_id                                                      = (known after apply)
+
+      + subnet_mapping (known after apply)
+    }
+
+  # module.primary.aws_lb.this["main"] will be created
+  + resource "aws_lb" "this" {
+      + arn                                                          = (known after apply)
+      + arn_suffix                                                   = (known after apply)
+      + dns_name                                                     = (known after apply)
+      + dns_record_client_routing_policy                             = "any_availability_zone"
+      + enable_cross_zone_load_balancing                             = true
+      + enable_deletion_protection                                   = false
+      + enable_prefix_for_ipv6_source_nat                            = (known after apply)
+      + enable_zonal_shift                                           = false
+      + enforce_security_group_inbound_rules_on_private_link_traffic = (known after apply)
+      + id                                                           = (known after apply)
+      + internal                                                     = false
+      + ip_address_type                                              = (known after apply)
+      + load_balancer_type                                           = "network"
+      + name                                                         = "nkosi-paysw-eu"
+      + name_prefix                                                  = (known after apply)
+      + region                                                       = "eu-west-1"
+      + secondary_ips_auto_assigned_per_subnet                       = (known after apply)
+      + security_groups                                              = (known after apply)
+      + subnets                                                      = (known after apply)
+      + tags_all                                                     = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                                       = (known after apply)
+      + zone_id                                                      = (known after apply)
+
+      + subnet_mapping (known after apply)
+    }
+
+  # module.primary.aws_lb_listener.this["canary"] will be created
+  + resource "aws_lb_listener" "this" {
+      + arn                                                                   = (known after apply)
+      + id                                                                    = (known after apply)
+      + load_balancer_arn                                                     = (known after apply)
+      + port                                                                  = 7000
+      + protocol                                                              = "TCP"
+      + region                                                                = "eu-west-1"
+      + routing_http_request_x_amzn_mtls_clientcert_header_name               = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_issuer_header_name        = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_leaf_header_name          = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_subject_header_name       = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_validity_header_name      = (known after apply)
+      + routing_http_request_x_amzn_tls_cipher_suite_header_name              = (known after apply)
+      + routing_http_request_x_amzn_tls_version_header_name                   = (known after apply)
+      + routing_http_response_access_control_allow_credentials_header_value   = (known after apply)
+      + routing_http_response_access_control_allow_headers_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_methods_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_origin_header_value        = (known after apply)
+      + routing_http_response_access_control_expose_headers_header_value      = (known after apply)
+      + routing_http_response_access_control_max_age_header_value             = (known after apply)
+      + routing_http_response_content_security_policy_header_value            = (known after apply)
+      + routing_http_response_server_enabled                                  = (known after apply)
+      + routing_http_response_strict_transport_security_header_value          = (known after apply)
+      + routing_http_response_x_content_type_options_header_value             = (known after apply)
+      + routing_http_response_x_frame_options_header_value                    = (known after apply)
+      + ssl_policy                                                            = (known after apply)
+      + tags_all                                                              = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + tcp_idle_timeout_seconds                                              = (known after apply)
+
+      + default_action {
+          + order            = (known after apply)
+          + target_group_arn = (known after apply)
+          + type             = "forward"
+        }
+
+      + mutual_authentication (known after apply)
+    }
+
+  # module.primary.aws_lb_listener.this["main"] will be created
+  + resource "aws_lb_listener" "this" {
+      + arn                                                                   = (known after apply)
+      + id                                                                    = (known after apply)
+      + load_balancer_arn                                                     = (known after apply)
+      + port                                                                  = 7000
+      + protocol                                                              = "TCP"
+      + region                                                                = "eu-west-1"
+      + routing_http_request_x_amzn_mtls_clientcert_header_name               = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_issuer_header_name        = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_leaf_header_name          = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_subject_header_name       = (known after apply)
+      + routing_http_request_x_amzn_mtls_clientcert_validity_header_name      = (known after apply)
+      + routing_http_request_x_amzn_tls_cipher_suite_header_name              = (known after apply)
+      + routing_http_request_x_amzn_tls_version_header_name                   = (known after apply)
+      + routing_http_response_access_control_allow_credentials_header_value   = (known after apply)
+      + routing_http_response_access_control_allow_headers_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_methods_header_value       = (known after apply)
+      + routing_http_response_access_control_allow_origin_header_value        = (known after apply)
+      + routing_http_response_access_control_expose_headers_header_value      = (known after apply)
+      + routing_http_response_access_control_max_age_header_value             = (known after apply)
+      + routing_http_response_content_security_policy_header_value            = (known after apply)
+      + routing_http_response_server_enabled                                  = (known after apply)
+      + routing_http_response_strict_transport_security_header_value          = (known after apply)
+      + routing_http_response_x_content_type_options_header_value             = (known after apply)
+      + routing_http_response_x_frame_options_header_value                    = (known after apply)
+      + ssl_policy                                                            = (known after apply)
+      + tags_all                                                              = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + tcp_idle_timeout_seconds                                              = (known after apply)
+
+      + default_action {
+          + order            = (known after apply)
+          + target_group_arn = (known after apply)
+          + type             = "forward"
+        }
+
+      + mutual_authentication (known after apply)
+    }
+
+  # module.primary.aws_lb_target_group.this["canary"] will be created
+  + resource "aws_lb_target_group" "this" {
+      + arn                                = (known after apply)
+      + arn_suffix                         = (known after apply)
+      + connection_termination             = (known after apply)
+      + deregistration_delay               = "10"
+      + id                                 = (known after apply)
+      + ip_address_type                    = (known after apply)
+      + lambda_multi_value_headers_enabled = false
+      + load_balancer_arns                 = (known after apply)
+      + load_balancing_algorithm_type      = (known after apply)
+      + load_balancing_anomaly_mitigation  = (known after apply)
+      + load_balancing_cross_zone_enabled  = (known after apply)
+      + name                               = "nkosi-paysw-eu-canary"
+      + name_prefix                        = (known after apply)
+      + port                               = 7000
+      + preserve_client_ip                 = "false"
+      + protocol                           = "TCP"
+      + protocol_version                   = (known after apply)
+      + proxy_protocol_v2                  = false
+      + region                             = "eu-west-1"
+      + slow_start                         = 0
+      + tags_all                           = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + target_type                        = "instance"
+      + vpc_id                             = (known after apply)
+
+      + health_check {
+          + enabled             = true
+          + healthy_threshold   = 2
+          + interval            = 10
+          + matcher             = (known after apply)
+          + path                = (known after apply)
+          + port                = "7000"
+          + protocol            = "TCP"
+          + timeout             = (known after apply)
+          + unhealthy_threshold = 2
+        }
+
+      + stickiness (known after apply)
+
+      + target_failover (known after apply)
+
+      + target_group_health (known after apply)
+
+      + target_health_state (known after apply)
+    }
+
+  # module.primary.aws_lb_target_group.this["main"] will be created
+  + resource "aws_lb_target_group" "this" {
+      + arn                                = (known after apply)
+      + arn_suffix                         = (known after apply)
+      + connection_termination             = (known after apply)
+      + deregistration_delay               = "10"
+      + id                                 = (known after apply)
+      + ip_address_type                    = (known after apply)
+      + lambda_multi_value_headers_enabled = false
+      + load_balancer_arns                 = (known after apply)
+      + load_balancing_algorithm_type      = (known after apply)
+      + load_balancing_anomaly_mitigation  = (known after apply)
+      + load_balancing_cross_zone_enabled  = (known after apply)
+      + name                               = "nkosi-paysw-eu"
+      + name_prefix                        = (known after apply)
+      + port                               = 7000
+      + preserve_client_ip                 = "false"
+      + protocol                           = "TCP"
+      + protocol_version                   = (known after apply)
+      + proxy_protocol_v2                  = false
+      + region                             = "eu-west-1"
+      + slow_start                         = 0
+      + tags_all                           = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + target_type                        = "instance"
+      + vpc_id                             = (known after apply)
+
+      + health_check {
+          + enabled             = true
+          + healthy_threshold   = 2
+          + interval            = 10
+          + matcher             = (known after apply)
+          + path                = (known after apply)
+          + port                = "7000"
+          + protocol            = "TCP"
+          + timeout             = (known after apply)
+          + unhealthy_threshold = 2
+        }
+
+      + stickiness (known after apply)
+
+      + target_failover (known after apply)
+
+      + target_group_health (known after apply)
+
+      + target_health_state (known after apply)
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["canary"] will be created
+  + resource "aws_lb_target_group_attachment" "this" {
+      + id               = (known after apply)
+      + port             = 7000
+      + region           = "eu-west-1"
+      + target_group_arn = (known after apply)
+      + target_id        = (known after apply)
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["switch-0"] will be created
+  + resource "aws_lb_target_group_attachment" "this" {
+      + id               = (known after apply)
+      + port             = 7000
+      + region           = "eu-west-1"
+      + target_group_arn = (known after apply)
+      + target_id        = (known after apply)
+    }
+
+  # module.primary.aws_lb_target_group_attachment.this["switch-1"] will be created
+  + resource "aws_lb_target_group_attachment" "this" {
+      + id               = (known after apply)
+      + port             = 7000
+      + region           = "eu-west-1"
+      + target_group_arn = (known after apply)
+      + target_id        = (known after apply)
+    }
+
+  # module.primary.aws_route.internet will be created
+  + resource "aws_route" "internet" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + region                 = "eu-west-1"
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # module.primary.aws_route_table.public will be created
+  + resource "aws_route_table" "public" {
+      + arn              = (known after apply)
+      + id               = (known after apply)
+      + owner_id         = (known after apply)
+      + propagating_vgws = (known after apply)
+      + region           = "eu-west-1"
+      + route            = (known after apply)
+      + tags             = {
+          + "Name" = "nkosi-paysw-eu-public-rt"
+        }
+      + tags_all         = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-public-rt"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id           = (known after apply)
+    }
+
+  # module.primary.aws_route_table_association.public[0] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + region         = "eu-west-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.primary.aws_route_table_association.public[1] will be created
+  + resource "aws_route_table_association" "public" {
+      + id             = (known after apply)
+      + region         = "eu-west-1"
+      + route_table_id = (known after apply)
+      + subnet_id      = (known after apply)
+    }
+
+  # module.primary.aws_security_group.switch will be created
+  + resource "aws_security_group" "switch" {
+      + arn                    = (known after apply)
+      + description            = "Payment switch - port 7000 from inside the VPC (the NLB) only"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = (known after apply)
+      + name                   = "nkosi-paysw-eu-switch-sg"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + region                 = "eu-west-1"
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "nkosi-paysw-eu-switch-sg"
+        }
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-switch-sg"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # module.primary.aws_subnet.public[0] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = (known after apply)
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.150.1.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "eu-west-1"
+      + tags                                           = {
+          + "Name" = "nkosi-paysw-eu-public-0"
+        }
+      + tags_all                                       = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-public-0"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.primary.aws_subnet.public[1] will be created
+  + resource "aws_subnet" "public" {
+      + arn                                            = (known after apply)
+      + assign_ipv6_address_on_creation                = false
+      + availability_zone                              = (known after apply)
+      + availability_zone_id                           = (known after apply)
+      + cidr_block                                     = "10.150.2.0/24"
+      + enable_dns64                                   = false
+      + enable_resource_name_dns_a_record_on_launch    = false
+      + enable_resource_name_dns_aaaa_record_on_launch = false
+      + id                                             = (known after apply)
+      + ipv6_cidr_block                                = (known after apply)
+      + ipv6_cidr_block_association_id                 = (known after apply)
+      + ipv6_native                                    = false
+      + map_public_ip_on_launch                        = true
+      + owner_id                                       = (known after apply)
+      + private_dns_hostname_type_on_launch            = (known after apply)
+      + region                                         = "eu-west-1"
+      + tags                                           = {
+          + "Name" = "nkosi-paysw-eu-public-1"
+        }
+      + tags_all                                       = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-public-1"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + vpc_id                                         = (known after apply)
+    }
+
+  # module.primary.aws_vpc.this will be created
+  + resource "aws_vpc" "this" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.150.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = true
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + region                               = "eu-west-1"
+      + tags                                 = {
+          + "Name" = "nkosi-paysw-eu-vpc"
+        }
+      + tags_all                             = {
+          + "ManagedBy" = "terraform"
+          + "Name"      = "nkosi-paysw-eu-vpc"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+    }
+
+  # module.primary.aws_vpc_security_group_egress_rule.all will be created
+  + resource "aws_vpc_security_group_egress_rule" "all" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + description            = "Outbound: SSM, package repositories"
+      + id                     = (known after apply)
+      + ip_protocol            = "-1"
+      + region                 = "eu-west-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+    }
+
+  # module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch will be created
+  + resource "aws_vpc_security_group_ingress_rule" "nlb_to_switch" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "10.150.0.0/16"
+      + description            = "TCP 7000 from the NLB (its addresses are inside the VPC)"
+      + from_port              = 7000
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + region                 = "eu-west-1"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {
+          + "ManagedBy" = "terraform"
+          + "Project"   = "aws-global-accelerator-static-ips"
+        }
+      + to_port                = 7000
+    }
+
+Plan: 48 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + accelerator_arn = (known after apply)
+  + accelerator_dns = (known after apply)
+  + endpoint_groups = {
+      + dr      = (known after apply)
+      + primary = (known after apply)
+    }
+  + paysw_sha256    = "9a0d72f4522368cf26bc005eb74ee9fddd7cd8a001529a4e00d5abf51bdb9fe1"
+  + regions         = {
+      + dr      = {
+          + instances = [
+              + (known after apply),
+              + (known after apply),
+            ]
+          + nlb_dns   = (known after apply)
+          + region    = "us-east-1"
+        }
+      + primary = {
+          + canary_instance = (known after apply)
+          + canary_nlb_dns  = (known after apply)
+          + instances       = [
+              + (known after apply),
+              + (known after apply),
+            ]
+          + nlb_dns         = (known after apply)
+          + region          = "eu-west-1"
+        }
+    }
+  + static_ips      = (known after apply)
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: base.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "base.tfplan"
+Releasing state lock. This may take a few moments...

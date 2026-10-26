@@ -1,0 +1,73 @@
+{
+ "taken_utc": "2026-10-26T05:02:17.590Z",
+ "rows": [
+  {
+   "target": "static IP 1",
+   "host": "15.197.220.221",
+   "attempts": 30,
+   "ok": 30,
+   "answered_by": [
+    "eu-west-1"
+   ],
+   "connect_ms_p50": 101.05,
+   "connect_ms_p90": 103.1,
+   "auth_ms_p50": 474.65,
+   "auth_ms_p90": 512.6,
+   "server_saw": [
+    "10.150.1.57",
+    "10.150.2.229"
+   ]
+  },
+  {
+   "target": "static IP 2",
+   "host": "166.117.216.165",
+   "attempts": 30,
+   "ok": 30,
+   "answered_by": [
+    "eu-west-1"
+   ],
+   "connect_ms_p50": 96.65,
+   "connect_ms_p90": 103.6,
+   "auth_ms_p50": 500.55,
+   "auth_ms_p90": 512.7,
+   "server_saw": [
+    "10.150.1.57",
+    "10.150.2.229"
+   ]
+  },
+  {
+   "target": "us-east-1 NLB direct",
+   "host": "nkosi-paysw-us-e86bbc3a939cc46a.elb.us-east-1.amazonaws.com",
+   "attempts": 30,
+   "ok": 30,
+   "answered_by": [
+    "us-east-1"
+   ],
+   "connect_ms_p50": 409.05,
+   "connect_ms_p90": 482.1,
+   "auth_ms_p50": 716.7,
+   "auth_ms_p90": 819.1,
+   "server_saw": [
+    "10.151.1.97",
+    "10.151.2.83"
+   ]
+  },
+  {
+   "target": "eu-west-1 NLB direct",
+   "host": "nkosi-paysw-eu-6f2baf321c5efce4.elb.eu-west-1.amazonaws.com",
+   "attempts": 30,
+   "ok": 30,
+   "answered_by": [
+    "eu-west-1"
+   ],
+   "connect_ms_p50": 307.1,
+   "connect_ms_p90": 308.9,
+   "auth_ms_p50": 614.1,
+   "auth_ms_p90": 615.0,
+   "server_saw": [
+    "10.150.1.57",
+    "10.150.2.229"
+   ]
+  }
+ ]
+}

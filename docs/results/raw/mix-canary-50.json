@@ -1,0 +1,8 @@
+{
+ "taken_utc": "2026-10-26T05:09:15.492Z",
+ "n": 300,
+ "counts": {
+  "eu-west-1 canary NLB": 89,
+  "eu-west-1 main NLB": 211
+ }
+}

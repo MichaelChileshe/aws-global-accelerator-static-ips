@@ -1,0 +1,144 @@
+Acquiring state lock. This may take a few moments...
+aws_globalaccelerator_accelerator.paysw: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8]
+aws_iam_role.switch: Refreshing state... [id=nkosi-paysw-role]
+aws_iam_instance_profile.switch: Refreshing state... [id=nkosi-paysw-profile]
+aws_iam_role_policy_attachment.switch_ssm: Refreshing state... [id=nkosi-paysw-role/arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore]
+aws_globalaccelerator_listener.tcp7000: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1]
+module.dr.data.aws_ssm_parameter.al2023_arm: Reading...
+module.dr.aws_vpc.this: Refreshing state... [id=vpc-028a9d9b695a35796]
+module.dr.data.aws_availability_zones.available: Reading...
+module.primary.data.aws_ssm_parameter.al2023_arm: Reading...
+module.primary.data.aws_availability_zones.available: Reading...
+module.primary.aws_vpc.this: Refreshing state... [id=vpc-08455d74a7b626599]
+module.primary.data.aws_availability_zones.available: Read complete after 1s [id=eu-west-1]
+module.dr.data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.primary.data.aws_ssm_parameter.al2023_arm: Read complete after 1s [id=/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64]
+module.dr.data.aws_availability_zones.available: Read complete after 1s [id=us-east-1]
+module.primary.aws_internet_gateway.this: Refreshing state... [id=igw-0b96ac107ace87f40]
+module.primary.aws_route_table.public: Refreshing state... [id=rtb-07190dd092e854a08]
+module.primary.aws_security_group.switch: Refreshing state... [id=sg-0d3edaa4dbc1c35d8]
+module.primary.aws_subnet.public[0]: Refreshing state... [id=subnet-0121c213bef0be1d5]
+module.primary.aws_subnet.public[1]: Refreshing state... [id=subnet-0d5b43b9f27ecc262]
+module.primary.aws_lb_target_group.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e]
+module.primary.aws_lb_target_group.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159]
+module.primary.aws_vpc_security_group_ingress_rule.nlb_to_switch: Refreshing state... [id=sgr-0697f68c2a88e8053]
+module.primary.aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-06f2d96b4bdece6c9]
+module.dr.aws_security_group.switch: Refreshing state... [id=sg-0f12bc2efd487a470]
+module.dr.aws_route_table.public: Refreshing state... [id=rtb-047b5fbdf75bd0368]
+module.dr.aws_subnet.public[0]: Refreshing state... [id=subnet-0a594e5e25d91facf]
+module.dr.aws_subnet.public[1]: Refreshing state... [id=subnet-007c3ee1e14d2ef1b]
+module.dr.aws_internet_gateway.this: Refreshing state... [id=igw-08f97302db0420433]
+module.dr.aws_lb_target_group.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700]
+module.dr.aws_vpc_security_group_egress_rule.all: Refreshing state... [id=sgr-06ff8fc31e6c4e75a]
+module.primary.aws_route.internet: Refreshing state... [id=r-rtb-07190dd092e854a081080289494]
+module.dr.aws_vpc_security_group_ingress_rule.nlb_to_switch: Refreshing state... [id=sgr-0fc337adce0ef44ca]
+module.primary.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0f85f97679982df66]
+module.primary.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0fd9731bf3e71fa80]
+module.primary.aws_lb.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4]
+module.primary.aws_lb.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17]
+module.dr.aws_lb.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:loadbalancer/net/nkosi-paysw-us/e86bbc3a939cc46a]
+module.dr.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0426b2c11888b14da]
+module.dr.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0e41817150bf061ab]
+module.primary.aws_instance.switch["canary"]: Refreshing state... [id=i-09a4e114a8772a725]
+module.primary.aws_instance.switch["switch-1"]: Refreshing state... [id=i-0add9540a72758534]
+module.primary.aws_instance.switch["switch-0"]: Refreshing state... [id=i-0c40d2dd6faff5e7f]
+module.dr.aws_route.internet: Refreshing state... [id=r-rtb-047b5fbdf75bd03681080289494]
+module.dr.aws_instance.switch["switch-1"]: Refreshing state... [id=i-007d44cbd6a491f79]
+module.dr.aws_instance.switch["switch-0"]: Refreshing state... [id=i-0581e2948846db3b5]
+module.primary.aws_lb_listener.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu/6f2baf321c5efce4/03b53a199e966964]
+aws_globalaccelerator_endpoint_group.primary: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+module.primary.aws_lb_listener.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:listener/net/nkosi-paysw-eu-canary/74df44cb31a03b17/2d5aade900553244]
+module.dr.aws_lb_listener.this["main"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:listener/net/nkosi-paysw-us/e86bbc3a939cc46a/d0728cc3bccdab81]
+aws_globalaccelerator_endpoint_group.dr: Refreshing state... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002]
+module.primary.aws_lb_target_group_attachment.this["canary"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu-canary/ded0d684e931b159,i-09a4e114a8772a725,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-0"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0c40d2dd6faff5e7f,7000]
+module.primary.aws_lb_target_group_attachment.this["switch-1"]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:<account-id>:targetgroup/nkosi-paysw-eu/1f1bbef61c46398e,i-0add9540a72758534,7000]
+module.dr.aws_lb_target_group_attachment.this["switch-0"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-0581e2948846db3b5,7000]
+module.dr.aws_lb_target_group_attachment.this["switch-1"]: Refreshing state... [id=arn:aws:elasticloadbalancing:us-east-1:<account-id>:targetgroup/nkosi-paysw-us/f67f480eb09cd700,i-007d44cbd6a491f79,7000]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_globalaccelerator_endpoint_group.primary will be updated in-place
+  ~ resource "aws_globalaccelerator_endpoint_group" "primary" {
+        id                            = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700"
+        # (9 unchanged attributes hidden)
+
+      - endpoint_configuration {
+          - client_ip_preservation_enabled = false -> null
+          - endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17" -> null
+          - weight                         = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+      - endpoint_configuration {
+          - client_ip_preservation_enabled = false -> null
+          - endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4" -> null
+          - weight                         = 200 -> null
+            # (1 unchanged attribute hidden)
+        }
+      + endpoint_configuration {
+          + client_ip_preservation_enabled = false
+          + endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu-canary/74df44cb31a03b17"
+          + weight                         = 50
+            # (1 unchanged attribute hidden)
+        }
+      + endpoint_configuration {
+          + client_ip_preservation_enabled = false
+          + endpoint_id                    = "arn:aws:elasticloadbalancing:eu-west-1:<account-id>:loadbalancer/net/nkosi-paysw-eu/6f2baf321c5efce4"
+          + weight                         = 200
+        }
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: 
+aws_globalaccelerator_endpoint_group.primary: Modifying... [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+aws_globalaccelerator_endpoint_group.primary: Still modifying... [id=arn:aws:globalaccelerator::<account-id>...r/4d97f8c1/endpoint-group/58146e160700, 00m10s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Still modifying... [id=arn:aws:globalaccelerator::<account-id>...r/4d97f8c1/endpoint-group/58146e160700, 00m20s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Still modifying... [id=arn:aws:globalaccelerator::<account-id>...r/4d97f8c1/endpoint-group/58146e160700, 00m30s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Still modifying... [id=arn:aws:globalaccelerator::<account-id>...r/4d97f8c1/endpoint-group/58146e160700, 00m40s elapsed]
+aws_globalaccelerator_endpoint_group.primary: Modifications complete after 42s [id=arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700]
+Releasing state lock. This may take a few moments...
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+Outputs:
+
+accelerator_arn = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8"
+accelerator_dns = "a68b840701c2ad124.awsglobalaccelerator.com"
+endpoint_groups = {
+  "dr" = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/f2d0fa001002"
+  "primary" = "arn:aws:globalaccelerator::<account-id>:accelerator/8193d292-627c-443d-bb4b-eeb7f77908f8/listener/4d97f8c1/endpoint-group/58146e160700"
+}
+paysw_sha256 = "9a0d72f4522368cf26bc005eb74ee9fddd7cd8a001529a4e00d5abf51bdb9fe1"
+regions = {
+  "dr" = {
+    "instances" = [
+      "i-0581e2948846db3b5",
+      "i-007d44cbd6a491f79",
+    ]
+    "nlb_dns" = "nkosi-paysw-us-e86bbc3a939cc46a.elb.us-east-1.amazonaws.com"
+    "region" = "us-east-1"
+  }
+  "primary" = {
+    "canary_instance" = "i-09a4e114a8772a725"
+    "canary_nlb_dns" = "nkosi-paysw-eu-canary-74df44cb31a03b17.elb.eu-west-1.amazonaws.com"
+    "instances" = [
+      "i-0c40d2dd6faff5e7f",
+      "i-0add9540a72758534",
+    ]
+    "nlb_dns" = "nkosi-paysw-eu-6f2baf321c5efce4.elb.eu-west-1.amazonaws.com"
+    "region" = "eu-west-1"
+  }
+}
+static_ips = [
+  "15.197.220.221",
+  "166.117.216.165",
+]

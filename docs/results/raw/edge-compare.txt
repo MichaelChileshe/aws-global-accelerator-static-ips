@@ -1,0 +1,7 @@
+ip-ranges.json  syncToken 1792984625  createDate 2026-10-26-03-17-05
+  CLOUDFRONT                  214 IPv4 blocks (4,225,413 addresses)    34 IPv6 blocks
+  CLOUDFRONT_ORIGIN_FACING     49 IPv4 blocks (344,384 addresses)    38 IPv6 blocks
+  GLOBALACCELERATOR           132 IPv4 blocks (429,312 addresses)    47 IPv6 blocks
+my static IPs inside a GLOBALACCELERATOR block: {'15.197.220.221': True, '166.117.216.165': True}
+a68b840701c2ad124.awsglobalaccelerator.com resolved 10 times -> ['15.197.220.221', '166.117.216.165']  (same as the static IPs: True)
+saved /home/michael/global-accelerator/build/results/edge-compare.json

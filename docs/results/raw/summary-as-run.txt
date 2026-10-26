@@ -1,0 +1,49 @@
+
+== Accelerator
+  after-drills: status / static IPs                                                                          DEPLOYED / 15.197.220.221 166.117.216.165
+  after-drills: eu-west-1 dial / endpoints                                                                   100.0% / nkosi-paysw-eu w200 HEALTHY, nkosi-paysw-eu-canary w0 HEALTHY
+  after-drills: us-east-1 dial / endpoints                                                                   100.0% / nkosi-paysw-us w128 HEALTHY
+  base: status / static IPs                                                                                  DEPLOYED / 15.197.220.221 166.117.216.165
+  base: eu-west-1 dial / endpoints                                                                           100.0% / nkosi-paysw-eu w200 HEALTHY, nkosi-paysw-eu-canary w0 HEALTHY
+  base: us-east-1 dial / endpoints                                                                           100.0% / nkosi-paysw-us w128 HEALTHY
+  canary-50: status / static IPs                                                                             DEPLOYED / 15.197.220.221 166.117.216.165
+  canary-50: eu-west-1 dial / endpoints                                                                      100.0% / nkosi-paysw-eu w200 HEALTHY, nkosi-paysw-eu-canary w50 HEALTHY
+  canary-50: us-east-1 dial / endpoints                                                                      100.0% / nkosi-paysw-us w128 HEALTHY
+  dial-50: status / static IPs                                                                               DEPLOYED / 15.197.220.221 166.117.216.165
+  dial-50: eu-west-1 dial / endpoints                                                                        50.0% / nkosi-paysw-eu w200 HEALTHY, nkosi-paysw-eu-canary w0 HEALTHY
+  dial-50: us-east-1 dial / endpoints                                                                        100.0% / nkosi-paysw-us w128 HEALTHY
+  during-failover: status / static IPs                                                                       DEPLOYED / 15.197.220.221 166.117.216.165
+  during-failover: eu-west-1 dial / endpoints                                                                100.0% / nkosi-paysw-eu w200 UNHEALTHY, nkosi-paysw-eu-canary w0 UNHEALTHY
+  during-failover: us-east-1 dial / endpoints                                                                100.0% / nkosi-paysw-us w128 HEALTHY
+
+== Latency
+  static IP 1: ok / answered by / connect p50 ms (static IP: to edge) / full AUTH p50 / p90 ms               30/30 / eu-west-1 / 101.05 / 474.65 / 512.6
+  static IP 2: ok / answered by / connect p50 ms (static IP: to edge) / full AUTH p50 / p90 ms               30/30 / eu-west-1 / 96.65 / 500.55 / 512.7
+  us-east-1 NLB direct: ok / answered by / connect p50 ms (static IP: to edge) / full AUTH p50 / p90 ms      30/30 / us-east-1 / 409.05 / 716.7 / 819.1
+  eu-west-1 NLB direct: ok / answered by / connect p50 ms (static IP: to edge) / full AUTH p50 / p90 ms      30/30 / eu-west-1 / 307.1 / 614.1 / 615.0
+
+== Traffic mix
+  base (200 connections)                                                                                     eu-west-1 main NLB 200
+  canary-50 (300 connections)                                                                                eu-west-1 main NLB 211, eu-west-1 canary NLB 89
+  dial-50 (300 connections)                                                                                  eu-west-1 main NLB 154, us-east-1 main NLB 146
+
+== Watch
+  failover: approved / attempts / by region                                                                  395 / 609 / {'eu-west-1': 240, 'FAILED': 214, 'us-east-1': 155}
+  failover: stop eu-west-1 at 05:30:52.222: 1st fail / 1st other Region / failed / outage s / stop->other s  2026-10-26T05:30:56.252Z / 2026-10-26T05:31:54.491Z / 209 / 58.24 / 62.27
+  failover: start eu-west-1 at 05:32:20.500: 1st answer back / seconds                                       2026-10-26T05:33:24.968Z / 64.47
+
+== Edge compare
+  CLOUDFRONT: IPv4 blocks / IPv4 addresses / IPv6 blocks                                                     214 / 4225413 / 34
+  CLOUDFRONT_ORIGIN_FACING: IPv4 blocks / IPv4 addresses / IPv6 blocks                                       49 / 344384 / 38
+  GLOBALACCELERATOR: IPv4 blocks / IPv4 addresses / IPv6 blocks                                              132 / 429312 / 47
+  static IPs inside GLOBALACCELERATOR blocks                                                                 {'15.197.220.221': True, '166.117.216.165': True}
+  DNS answers over 10 lookups / match static IPs                                                             15.197.220.221 166.117.216.165 / True
+
+== Terraform
+  tf-apply-base.txt                                                                                          Apply complete! Resources: 48 added, 0 changed, 0 destroyed.[0m
+  tf-apply-canary.txt                                                                                        Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+  tf-apply-dial.txt                                                                                          Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+  tf-destroy.txt                                                                                             Destroy complete! Resources: 48 destroyed.
+  tf-plan-base.txt                                                                                           Plan: 48 to add, 0 to change, 0 to destroy.
+
+saved build/results/summary.csv

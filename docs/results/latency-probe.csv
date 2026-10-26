@@ -1,0 +1,5 @@
+target,attempts,ok,answered_by,connect_ms_p50,connect_ms_p90,full_auth_ms_p50,full_auth_ms_p90,switch_saw_source
+static IP 1,30,30,eu-west-1,101.05,103.1,474.65,512.6,10.150.1.57 10.150.2.229
+static IP 2,30,30,eu-west-1,96.65,103.6,500.55,512.7,10.150.1.57 10.150.2.229
+us-east-1 NLB direct,30,30,us-east-1,409.05,482.1,716.7,819.1,10.151.1.97 10.151.2.83
+eu-west-1 NLB direct,30,30,eu-west-1,307.1,308.9,614.1,615.0,10.150.1.57 10.150.2.229
